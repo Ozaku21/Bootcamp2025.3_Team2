@@ -14,7 +14,6 @@ public class CurrencyExchangeTest extends BaseTest {
     @RetryCount(count = 1)
     public void NavigateToCurrencyExchangePage() {
         commonSteps
-            .clickAcceptCookiesButton()
             .openPersonalNavigation()
             .clickCurrencyExchangeLink();
     }

@@ -17,18 +17,6 @@ public class CommonSteps {
         this.commonPage = new CommonPage(page, deviceType);
     }
 
-    public void clickElement(Locator element, boolean waitForMenu) {
-        if (deviceType == DeviceType.PHONE) {
-            element.waitFor();
-            if (waitForMenu) {
-                page.waitForTimeout(1000);
-            }
-            element.dispatchEvent("click");
-        } else {
-            element.click();
-        }
-    }
-
     @Step("Open personal navigation context")
     public CommonSteps openPersonalNavigation() {
         if (deviceType == DeviceType.DESKTOP) {
@@ -40,11 +28,9 @@ public class CommonSteps {
     }
 
     @Step("Accept cookies")
-    public CommonSteps clickAcceptCookiesButton() {
-        try {
+    public CommonSteps acceptCookiesIfPresent() {
+        if (commonPage.acceptCookiesButton.isVisible()) {
             commonPage.acceptCookiesButton.click();
-        } catch (Exception e) {
-            // Cookie prompt not present, skip
         }
         return this;
     }
@@ -61,18 +47,19 @@ public class CommonSteps {
 
     @Step("Click menu button")
     public CommonSteps clickMenuButton() {
-        if(deviceType == DeviceType.PHONE){
+        if(deviceType == DeviceType.MOBILE){
             commonPage.MenuButton().click();
         }
         return this;
     }
 
-    @Step("Click treasury products link")
+    @Step("Click currency exchange link")
     public CommonSteps clickCurrencyExchangeLink() {
         if (deviceType == DeviceType.DESKTOP) {
             commonPage.currencyExchangeLink.click();
         } else {
-            clickElement(commonPage.currencyExchangeLink, true);
+            page.waitForTimeout(1000);
+            commonPage.currencyExchangeLink.dispatchEvent("click");
         }
         return this;
     }

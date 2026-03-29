@@ -38,7 +38,7 @@ public class CommonPage {
     }
 
     public Locator MenuButton(){
-        if(deviceType == DeviceType.PHONE){
+        if(deviceType == DeviceType.MOBILE){
             return page.locator(".tbcx-pw-hamburger-menu__button");
         }
         return null;

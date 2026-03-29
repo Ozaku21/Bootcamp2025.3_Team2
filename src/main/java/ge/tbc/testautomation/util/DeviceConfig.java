@@ -15,7 +15,7 @@ public class DeviceConfig {
     public static BrowserContext createContext(Browser browser, DeviceType deviceType) {
         ViewportSize viewport;
 
-        if (deviceType == DeviceType.PHONE) {
+        if (deviceType == DeviceType.MOBILE) {
             viewport = new ViewportSize(430, 932);
         } else {
             viewport = new ViewportSize(1280, 720);

@@ -28,7 +28,7 @@
 
     <test name="Phone">
         <parameter name="browser" value="chromium"/>
-        <parameter name="deviceType" value="PHONE"/>
+        <parameter name="deviceType" value="MOBILE"/>
         <classes>
             <class name="ge.tbc.testautomation.ui.CurrencyExchangeTest"/>
         </classes>
