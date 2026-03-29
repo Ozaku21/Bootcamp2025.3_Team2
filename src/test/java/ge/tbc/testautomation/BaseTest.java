@@ -1,6 +1,7 @@
 package ge.tbc.testautomation;
 
 import com.microsoft.playwright.*;
+import ge.tbc.testautomation.pages.CurrencyPage;
 import ge.tbc.testautomation.steps.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,6 +21,7 @@ public class BaseTest {
     public DeviceType deviceType;
 
     public CommonSteps commonSteps;
+    public CurrencySteps currencySteps;
 
 
     protected String getBaseUrl() {
@@ -74,6 +76,7 @@ public class BaseTest {
         System.out.println("Setup done.");
 
         commonSteps = new CommonSteps(page, deviceType);
+        currencySteps = new CurrencySteps(page, deviceType);
     }
 
     @AfterClass(alwaysRun = true)

@@ -27,14 +27,41 @@ public class CurrencyExchangeTest extends BaseTest {
         }
     }
 
-//    @Test(description = "Fill out the inputs and Verify the currency exchange with multiple currency pairs and amounts", priority = 2,
-//            dataProvider = "currencyPairs", dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
-//    @RetryCount(count = 2)
-//    public void CurrencyConversion(String fromCurrency, String toCurrency, double amount) {
-//        currencySteps
-//                .selectFromCurrency(fromCurrency)
-//                .selectToCurrency(toCurrency)
-//                .enterCurrencyAmount(amount)
-//                .verifyConversion(amount);
-//    }
+    @Test(description = "Verify currency conversion across multiple currency pairs",
+            priority = 2, dataProvider = "currencyPairs",
+            dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
+    @RetryCount(count = 2)
+    public void currencyConversionPairs(String fromCurrency, String toCurrency, double amount) {
+        currencySteps
+                .selectFromCurrency(fromCurrency)
+                .selectToCurrency(toCurrency)
+                .enterCurrencyAmount(amount)
+                .verifyConversion(amount);
+    }
+
+    @Test(description = "Verify currency conversion across multiple amounts",
+            priority = 2, dataProvider = "currencyAmounts",
+            dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
+    @RetryCount(count = 2)
+    public void currencyConversionAmounts(String fromCurrency, String toCurrency, double amount) {
+        currencySteps
+                .selectFromCurrency(fromCurrency)
+                .selectToCurrency(toCurrency)
+                .enterCurrencyAmount(amount)
+                .verifyConversion(amount);
+    }
+
+    @Test(description = "Verify swap button flips currencies and recalculates conversion",
+        priority = 3, dataProvider = "currencyPairs",
+        dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
+    @RetryCount(count = 2)
+    public void currencySwap(String fromCurrency, String toCurrency, double amount) {
+        currencySteps
+            .selectFromCurrency(fromCurrency)
+            .selectToCurrency(toCurrency)
+            .enterCurrencyAmount(amount)
+            .verifyConversion(amount)
+            .clickSwap()
+            .validateSwap(toCurrency, fromCurrency, amount);
+}
 }
