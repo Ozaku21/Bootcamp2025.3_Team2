@@ -1,7 +1,6 @@
 package ge.tbc.testautomation;
 
 import com.microsoft.playwright.*;
-import ge.tbc.testautomation.pages.CurrencyPage;
 import ge.tbc.testautomation.steps.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
