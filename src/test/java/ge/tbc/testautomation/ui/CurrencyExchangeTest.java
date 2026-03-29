@@ -14,17 +14,10 @@ public class CurrencyExchangeTest extends BaseTest {
     @Test(description = "Navigate to the currency exchange page", priority = 1, retryAnalyzer = RetryAnalyzer.class)
     @RetryCount(count = 1)
     public void NavigateToCurrencyExchangePage() {
-        if (deviceType == DeviceType.DESKTOP) {
-            commonSteps
-                    .clickAcceptCookiesButton()
-                    .hoverPersonalNav()
-                    .clickCurrencyExchangeLink();
-        } else {
-            commonSteps
-                    .clickAcceptCookiesButton()
-                    .clickMenuButton()
-                    .clickCurrencyExchangeLink();
-        }
+        commonSteps
+            .clickAcceptCookiesButton()
+            .openPersonalNavigation()
+            .clickCurrencyExchangeLink();
     }
 
     @Test(description = "Verify currency conversion across multiple currency pairs",

@@ -29,6 +29,16 @@ public class CommonSteps {
         }
     }
 
+    @Step("Open personal navigation context")
+    public CommonSteps openPersonalNavigation() {
+        if (deviceType == DeviceType.DESKTOP) {
+            hoverPersonalNav();
+        } else {
+            clickMenuButton();
+        }
+        return this;
+    }
+
     @Step("Accept cookies")
     public CommonSteps clickAcceptCookiesButton() {
         try {
