@@ -34,6 +34,15 @@ public class ConventorSteps {
         Assert.assertTrue(length <= 16);
         return this;
     }
+    public ConventorSteps compareInputAmountAndValidate() {
+        String amount = conventorPage
+                .inputField
+                .textContent()
+                .trim();
+        Assert.assertFalse(amount.contains("-") );
+        return this;
+    }
+
 
 
     @Step("Open currency dropdown at index: {dropdownIndex}")

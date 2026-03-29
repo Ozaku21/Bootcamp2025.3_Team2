@@ -1,7 +1,7 @@
 package ge.tbc.testautomation.steps;
 
 import com.microsoft.playwright.Page;
-import ge.tbc.testautomation.Pages.CommonPage;
+import ge.tbc.testautomation.pages.CommonPage;
 import io.qameta.allure.Step;
 
 public class CommonSteps {

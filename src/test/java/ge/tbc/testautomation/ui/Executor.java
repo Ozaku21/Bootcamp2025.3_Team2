@@ -16,6 +16,7 @@ public class Executor {
 
         return new Object[]{
                 new InputBoundaryTest(browser, deviceType),
+                new InvalidInputTest(browser, deviceType)
         };
     }
 }

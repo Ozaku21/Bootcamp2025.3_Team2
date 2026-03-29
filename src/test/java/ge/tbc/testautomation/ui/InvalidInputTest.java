@@ -6,10 +6,10 @@ import static ge.tbc.testautomation.data.Constants.*;
 
 @Epic("Currency Module")
 @Feature("Currency Converter")
-@Test(groups = {"Scenario - Validate Conventor Boundary - TP-T1"})
-public class InputBoundaryTest extends BaseTest {
+@Test(groups = {"Scenario - Validate Invalid Input - TP-T1"})
+public class InvalidInputTest extends BaseTest {
 
-    protected InputBoundaryTest(String browserName, String deviceType) {
+    protected InvalidInputTest(String browserName, String deviceType) {
         super(browserName, deviceType);
     }
 
@@ -38,14 +38,14 @@ public class InputBoundaryTest extends BaseTest {
     @Test(priority = 3)
     public void enterAmount() {
         conventorSteps
-                .fillInputField(amount);
+                .fillInputField(INVALID_AMOUNT);
     }
 
-    @Story("Verify Boundary")
+    @Story("Validate Invalid Input")
     @Severity(SeverityLevel.CRITICAL)
     @Test(priority = 4)
-    public void verifyBoundary() {
+    public void validateInvalidInput() {
         conventorSteps
-                .getInputLengthAndValidate();
+                .compareInputAmountAndValidate();
     }
 }

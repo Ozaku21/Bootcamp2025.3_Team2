@@ -32,9 +32,10 @@ public class BaseTest {
     public void setUp() {
         start(browserName, deviceType);
     }
-
     protected void start(String browserName, String deviceType) {
         playwright = Playwright.create();
+
+        boolean isCI = System.getenv("CI") != null;
 
         BrowserType browserType = switch (browserName.toLowerCase()) {
             case CHROMIUM , CHROME  -> playwright.chromium();
@@ -43,15 +44,24 @@ public class BaseTest {
             default -> throw new IllegalArgumentException(UNSUPPORTED + browserName);
         };
 
-        browser = browserType.launch(
-                new BrowserType.LaunchOptions()
-                        .setHeadless(false)
-                        .setSlowMo(1000)
-        );
+        BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions(); // ✅ added
+
+        if (isCI) {
+            launchOptions.setHeadless(true);
+            launchOptions.setArgs(List.of(
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage",
+                    "--disable-gpu"
+            ));
+        } else {
+            launchOptions.setHeadless(false);
+        }
+
+        browser = browserType.launch(launchOptions);
+
         Browser.NewContextOptions options =
-                new Browser.NewContextOptions()
-                        .setGeolocation(41.7151, 44.8271)
-                        .setPermissions(List.of(GEO_LOCATION));
+                new Browser.NewContextOptions();
+
         if (MOBILE.equalsIgnoreCase(deviceType)) {
             options.setViewportSize(430, 932)
                     .setIsMobile(true)
@@ -60,17 +70,16 @@ public class BaseTest {
         } else {
             options.setViewportSize(1920, 1080);
         }
+
         context = browser.newContext(options);
         page = context.newPage();
 
-        commonSteps = new CommonSteps(page,deviceType);
+        commonSteps = new CommonSteps(page, deviceType);
         conventorSteps = new ConventorSteps(page);
 
         page.navigate(BASE_URI);
-        commonSteps
-                .AcceptCookiesIfPresent();
+        commonSteps.AcceptCookiesIfPresent();
     }
-
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         if (context != null) context.close();
