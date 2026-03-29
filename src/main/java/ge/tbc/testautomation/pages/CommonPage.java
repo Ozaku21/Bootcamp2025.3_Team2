@@ -2,17 +2,17 @@ package ge.tbc.testautomation.pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import ge.tbc.testautomation.util.DeviceType;
 import com.microsoft.playwright.options.AriaRole;
+import static ge.tbc.testautomation.data.Constants.*;
 
 public class CommonPage {
     public Locator currencyExchangeLink,
             acceptCookiesButton;
 
     public Page page;
-    public DeviceType deviceType;
+    public String deviceType;
 
-    public CommonPage(Page page, DeviceType deviceType) {
+    public CommonPage(Page page, String deviceType) {
         this.page = page;
         this.deviceType = deviceType;
 
@@ -25,8 +25,8 @@ public class CommonPage {
                 ).first();
     }
 
-    public Locator PersonalNav(){
-        if(deviceType == DeviceType.DESKTOP){
+    public Locator PersonalNav() {
+        if (DESKTOP.equalsIgnoreCase(deviceType)) {
             return page.getByRole(
                             AriaRole.BANNER)
                     .getByRole(
@@ -37,8 +37,8 @@ public class CommonPage {
         return null;
     }
 
-    public Locator MenuButton(){
-        if(deviceType == DeviceType.MOBILE){
+    public Locator MenuButton() {
+        if (MOBILE.equalsIgnoreCase(deviceType)) {
             return page.locator(".tbcx-pw-hamburger-menu__button");
         }
         return null;

@@ -6,6 +6,7 @@ public class Constants {
     public static final double AMOUNT_TO_CONVERT = 217.0;
 
     // ── Browsers ──────────────────────────────────────────────────────
+    public static final String BROWSER  = "browser";
     public static final String CHROMIUM = "chromium";
     public static final String CHROME   = "chrome";
     public static final String FIREFOX  = "firefox";
@@ -14,7 +15,7 @@ public class Constants {
     public static final String EDGE     = "edge";
 
     // ── Device Types ──────────────────────────────────────────────────
-    public static final String DESKTOP  = "desktop";
-    public static final String MOBILE   = "mobile";
-
+    public static final String DEVICETYPE = "deviceType";
+    public static final String DESKTOP    = "desktop";
+    public static final String MOBILE     = "mobile";
 }

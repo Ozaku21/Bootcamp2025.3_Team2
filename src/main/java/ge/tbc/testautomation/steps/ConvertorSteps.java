@@ -2,66 +2,65 @@ package ge.tbc.testautomation.steps;
 
 import com.microsoft.playwright.Page;
 
-import ge.tbc.testautomation.pages.CurrencyPage;
-import ge.tbc.testautomation.util.DeviceType;
+import ge.tbc.testautomation.pages.ConvertorPage;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-public class CurrencySteps extends CommonSteps {
+public class ConvertorSteps extends CommonSteps {
 
-    CurrencyPage currencyPage;
+    ConvertorPage convertorPage;
 
-    public CurrencySteps(Page page, DeviceType deviceType) {
+    public ConvertorSteps(Page page, String deviceType) {
         super(page, deviceType);
-        currencyPage = new CurrencyPage(page, deviceType);
+        convertorPage = new ConvertorPage(page, deviceType);
     }
 
     @Step("Select from currency: {currency}")
-    public CurrencySteps selectFromCurrency(String currency) {
-        currencyPage.fromCurrencyButton.click();
-        currencyPage.getCurrencyItem(currency).scrollIntoViewIfNeeded();
-        currencyPage.getCurrencyItem(currency).click();
+    public ConvertorSteps selectFromCurrency(String currency) {
+        convertorPage.fromCurrencyButton.click();
+        convertorPage.getCurrencyItem(currency).scrollIntoViewIfNeeded();
+        convertorPage.getCurrencyItem(currency).click();
         return this;
     }
 
     @Step("Select to currency: {currency}")
-    public CurrencySteps selectToCurrency(String currency) {
-        currencyPage.toCurrencyButton.click();
-        currencyPage.getCurrencyItem(currency).scrollIntoViewIfNeeded();
-        currencyPage.getCurrencyItem(currency).click();
+    public ConvertorSteps selectToCurrency(String currency) {
+        convertorPage.toCurrencyButton.click();
+        convertorPage.getCurrencyItem(currency).scrollIntoViewIfNeeded();
+        convertorPage.getCurrencyItem(currency).click();
         return this;
     }
 
     @Step("Enter currency amount: {amount}")
-    public CurrencySteps enterCurrencyAmount(double amount) {
-        currencyPage.currencyInput1.fill(String.valueOf((int) amount));
+    public ConvertorSteps enterCurrencyAmount(double amount) {
+        convertorPage.currencyInput1.fill(String.valueOf((int) amount));
         return this;
     }
 
     @Step("Swap the conversion")
-    public CurrencySteps clickSwap(){
-        currencyPage.swapButton.click();
+    public ConvertorSteps clickSwap(){
+        convertorPage.swapButton.click();
         return this;
     }
 
     @Step("Verify the currencies are swapped: {expectedFrom} -> {expectedTo}")
-    public CurrencySteps validateSwap(String expectedFrom, String expectedTo, double amount){
-        assertThat(currencyPage.fromCurrencyButton).hasText(expectedFrom);
-        assertThat(currencyPage.toCurrencyButton).hasText(expectedTo);
+    public ConvertorSteps validateSwap(String expectedFrom, String expectedTo, double amount){
+        assertThat(convertorPage.fromCurrencyButton).hasText(expectedFrom);
+        assertThat(convertorPage.toCurrencyButton).hasText(expectedTo);
         verifyConversion(amount);
         return this;
     }
 
     @Step("Verify conversion for amount: {inputAmount}")
-    public CurrencySteps verifyConversion(double inputAmount) {
+    public ConvertorSteps verifyConversion(double inputAmount) {
         try {
-            assertThat(currencyPage.currencyRate).isVisible();
-            assertThat(currencyPage.currencyInput2).isVisible();
+            assertThat(convertorPage.currencyRate).isVisible();
+            assertThat(convertorPage.currencyInput2).isVisible();
 
-            double rate = parseRate(currencyPage.currencyRate.textContent());
-            double actual = parseAmount(currencyPage.currencyInput2.inputValue());
+            double rate = parseRate(convertorPage.currencyRate.textContent());
+            double actual = parseAmount(convertorPage.currencyInput2.inputValue());
             double expected = inputAmount * rate;
 
             Assert.assertEquals(actual, expected, 0.5,

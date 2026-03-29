@@ -10,6 +10,11 @@ import ge.tbc.testautomation.util.RetryCount;
 
 
 public class CurrencyExchangeTest extends BaseTest {
+
+    protected CurrencyExchangeTest(String browser, String deviceType) {
+        super(browser, deviceType);
+    }
+
     @Test(description = "Navigate to the currency exchange page", priority = 1, retryAnalyzer = RetryAnalyzer.class)
     @RetryCount(count = 1)
     public void NavigateToCurrencyExchangePage() {
@@ -23,7 +28,7 @@ public class CurrencyExchangeTest extends BaseTest {
             dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
     @RetryCount(count = 2)
     public void currencyConversionPairs(String fromCurrency, String toCurrency, double amount) {
-        currencySteps
+        convertorSteps
                 .selectFromCurrency(fromCurrency)
                 .selectToCurrency(toCurrency)
                 .enterCurrencyAmount(amount)
@@ -35,7 +40,7 @@ public class CurrencyExchangeTest extends BaseTest {
             dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
     @RetryCount(count = 2)
     public void currencyConversionAmounts(String fromCurrency, String toCurrency, double amount) {
-        currencySteps
+        convertorSteps
                 .selectFromCurrency(fromCurrency)
                 .selectToCurrency(toCurrency)
                 .enterCurrencyAmount(amount)
@@ -47,12 +52,12 @@ public class CurrencyExchangeTest extends BaseTest {
         dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
     @RetryCount(count = 2)
     public void currencySwap(String fromCurrency, String toCurrency, double amount) {
-        currencySteps
+        convertorSteps
             .selectFromCurrency(fromCurrency)
             .selectToCurrency(toCurrency)
             .enterCurrencyAmount(amount)
             .verifyConversion(amount)
             .clickSwap()
             .validateSwap(toCurrency, fromCurrency, amount);
-}
+    }
 }

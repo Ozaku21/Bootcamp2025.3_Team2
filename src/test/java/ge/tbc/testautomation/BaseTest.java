@@ -2,14 +2,13 @@ package ge.tbc.testautomation;
 
 import com.microsoft.playwright.*;
 import ge.tbc.testautomation.steps.CommonSteps;
-import ge.tbc.testautomation.steps.CurrencySteps;
-import ge.tbc.testautomation.util.DeviceType;
+import ge.tbc.testautomation.steps.ConvertorSteps;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import static ge.tbc.testautomation.data.Constants.*;
 
-public class BaseTest {
+public abstract class BaseTest {
 
     protected Playwright playwright;
     protected Browser browser;
@@ -17,18 +16,18 @@ public class BaseTest {
     protected Page page;
 
     protected CommonSteps commonSteps;
-    protected CurrencySteps currencySteps;
+    protected ConvertorSteps convertorSteps;
 
     private final String browserName;
-    private final DeviceType deviceType;
+    private final String deviceType;
 
-    protected BaseTest(String browserName, DeviceType deviceType) {
+    protected BaseTest(String browserName, String deviceType) {
         this.browserName = browserName.toLowerCase();
-        this.deviceType  = deviceType;
+        this.deviceType  = deviceType.toLowerCase();
     }
 
     protected BaseTest() {
-        this(CHROMIUM, DeviceType.DESKTOP);
+        this(CHROMIUM, DESKTOP);
     }
 
     @BeforeClass(alwaysRun = true)
@@ -40,8 +39,8 @@ public class BaseTest {
 
         BrowserType browserType = switch (browserName) {
             case CHROMIUM, CHROME, EDGE -> playwright.chromium();
-            case FIREFOX          -> playwright.firefox();
-            case WEBKIT, SAFARI   -> playwright.webkit();
+            case FIREFOX                -> playwright.firefox();
+            case WEBKIT, SAFARI         -> playwright.webkit();
             default -> throw new IllegalArgumentException("Unsupported browser: " + browserName);
         };
 
@@ -49,12 +48,11 @@ public class BaseTest {
             launchOptions.setChannel("msedge");
         }
 
-        browser = browserType.launch(launchOptions);
-        context = browser.newContext(buildContextOptions());
-        page    = context.newPage();
-
-        commonSteps   = new CommonSteps(page, deviceType);
-        currencySteps = new CurrencySteps(page, deviceType);
+        browser        = browserType.launch(launchOptions);
+        context        = browser.newContext(buildContextOptions());
+        page           = context.newPage();
+        commonSteps    = new CommonSteps(page, deviceType);
+        convertorSteps = new ConvertorSteps(page, deviceType);
 
         page.navigate(URL_TBC);
         commonSteps.acceptCookiesIfPresent();
@@ -71,13 +69,13 @@ public class BaseTest {
     private Browser.NewContextOptions buildContextOptions() {
         Browser.NewContextOptions options = new Browser.NewContextOptions();
         return switch (deviceType) {
-            case DESKTOP -> options
-                    .setViewportSize(1920, 1080);
-            case MOBILE -> options
+            case DESKTOP -> options.setViewportSize(1920, 1080);
+            case MOBILE  -> options
                     .setViewportSize(430, 932)
                     .setIsMobile(true)
                     .setHasTouch(true)
                     .setDeviceScaleFactor(3);
+            default -> throw new IllegalArgumentException("Unsupported device type: " + deviceType);
         };
     }
 }

@@ -3,9 +3,7 @@ package ge.tbc.testautomation.pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-import ge.tbc.testautomation.util.DeviceType;
-
-public class CurrencyPage extends CommonPage {
+public class ConvertorPage extends CommonPage {
 
     public Locator currencyForm,
             currencyRate,
@@ -18,7 +16,7 @@ public class CurrencyPage extends CommonPage {
             currencyList,
             swapButton;
 
-    public CurrencyPage(Page page, DeviceType deviceType) {
+    public ConvertorPage(Page page, String deviceType) {
         super(page, deviceType);
 
         this.currencyForm = page.locator(".tbcx-pw-exchange-rates-calculator");

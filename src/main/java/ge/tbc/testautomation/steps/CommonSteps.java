@@ -1,17 +1,16 @@
 package ge.tbc.testautomation.steps;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import ge.tbc.testautomation.pages.CommonPage;
-import ge.tbc.testautomation.util.DeviceType;
 import io.qameta.allure.Step;
+import static ge.tbc.testautomation.data.Constants.*;
 
 public class CommonSteps {
-    protected CommonPage commonPage;
-    protected Page page;
-    protected DeviceType deviceType;
+    public CommonPage commonPage;
+    public Page page;
+    public String deviceType;
 
-    public CommonSteps(Page page, DeviceType deviceType) {
+    public CommonSteps(Page page, String deviceType) {
         this.page = page;
         this.deviceType = deviceType;
         this.commonPage = new CommonPage(page, deviceType);
@@ -19,7 +18,7 @@ public class CommonSteps {
 
     @Step("Open personal navigation context")
     public CommonSteps openPersonalNavigation() {
-        if (deviceType == DeviceType.DESKTOP) {
+        if (DESKTOP.equalsIgnoreCase(deviceType)) {
             hoverPersonalNav();
         } else {
             clickMenuButton();
@@ -35,19 +34,17 @@ public class CommonSteps {
         return this;
     }
 
-
     @Step("Hover personal navigation")
     public CommonSteps hoverPersonalNav() {
-        if(deviceType == DeviceType.DESKTOP){
+        if (DESKTOP.equalsIgnoreCase(deviceType)) {
             commonPage.PersonalNav().hover();
         }
         return this;
     }
 
-
     @Step("Click menu button")
     public CommonSteps clickMenuButton() {
-        if(deviceType == DeviceType.MOBILE){
+        if (MOBILE.equalsIgnoreCase(deviceType)) {
             commonPage.MenuButton().click();
         }
         return this;
@@ -55,7 +52,7 @@ public class CommonSteps {
 
     @Step("Click currency exchange link")
     public CommonSteps clickCurrencyExchangeLink() {
-        if (deviceType == DeviceType.DESKTOP) {
+        if (DESKTOP.equalsIgnoreCase(deviceType)) {
             commonPage.currencyExchangeLink.click();
         } else {
             page.waitForTimeout(1000);
@@ -63,5 +60,4 @@ public class CommonSteps {
         }
         return this;
     }
-
 }
