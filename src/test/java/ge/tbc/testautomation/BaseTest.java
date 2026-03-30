@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeClass;
 
 import static ge.tbc.testautomation.data.Constants.*;
 
-public abstract class BaseTest {
+public class BaseTest {
 
     protected Playwright playwright;
     protected Browser browser;
@@ -41,7 +41,7 @@ public abstract class BaseTest {
             case CHROMIUM, CHROME, EDGE -> playwright.chromium();
             case FIREFOX                -> playwright.firefox();
             case WEBKIT, SAFARI         -> playwright.webkit();
-            default -> throw new IllegalArgumentException("Unsupported browser: " + browserName);
+            default -> throw new IllegalArgumentException(UNSUPPORTED + browserName);
         };
 
         if (EDGE.equals(browserName)) {
@@ -54,7 +54,7 @@ public abstract class BaseTest {
         commonSteps    = new CommonSteps(page, deviceType);
         convertorSteps = new ConvertorSteps(page, deviceType);
 
-        page.navigate(URL_TBC);
+        page.navigate(BASE_URI);
         commonSteps.acceptCookiesIfPresent();
     }
 
