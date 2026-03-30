@@ -1,95 +1,81 @@
 package ge.tbc.testautomation;
 
 import com.microsoft.playwright.*;
-import ge.tbc.testautomation.steps.*;
+import ge.tbc.testautomation.steps.CommonSteps;
+import ge.tbc.testautomation.steps.ConvertorSteps;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import ge.tbc.testautomation.util.DeviceConfig;
-import ge.tbc.testautomation.util.DeviceType;
 
 import static ge.tbc.testautomation.data.Constants.*;
 
 public class BaseTest {
 
-    public Playwright playwright;
-    public Browser browser;
-    public BrowserContext browserContext;
-    public Page page;
-    public DeviceType deviceType;
+    protected Playwright playwright;
+    protected Browser browser;
+    protected BrowserContext context;
+    protected Page page;
 
-    public CommonSteps commonSteps;
+    protected CommonSteps commonSteps;
+    protected ConvertorSteps convertorSteps;
 
+    private final String browserName;
+    private final String deviceType;
 
-    protected String getBaseUrl() {
-        return URL_TBC;
+    protected BaseTest(String browserName, String deviceType) {
+        this.browserName = browserName.toLowerCase();
+        this.deviceType  = deviceType.toLowerCase();
+    }
+
+    protected BaseTest() {
+        this(CHROMIUM, DESKTOP);
     }
 
     @BeforeClass(alwaysRun = true)
-    @Parameters({"deviceType", "browser"})
-    public void setUp(@Optional String deviceTypeParam, @Optional String browserParam) {
-
-        // ── Device Type ──────────────────────────────────────────────
-        if (deviceTypeParam == null || deviceTypeParam.isEmpty()) {
-            deviceType = DeviceType.DESKTOP;
-        } else {
-            try {
-                deviceType = DeviceType.valueOf(deviceTypeParam.toUpperCase());
-            } catch (IllegalArgumentException e) {
-                System.out.println("Unknown deviceType, defaulting to DESKTOP");
-                deviceType = DeviceType.DESKTOP;
-            }
-        }
-        System.out.println("Device: " + deviceType);
-
-        // ── Browser ──────────────────────────────────────────────────
-        if (browserParam == null || browserParam.isEmpty()) {
-            browserParam = "chromium";
-        }
-
+    public void setUp() {
         playwright = Playwright.create();
-        BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions().setHeadless(false);
 
-        switch (browserParam.toLowerCase()) {
-            case "edge":
-                browser = playwright.chromium().launch(launchOptions.setChannel("msedge"));
-                break;
-            case "firefox":
-                browser = playwright.firefox().launch(launchOptions);
-                break;
-            case "webkit":
-                browser = playwright.webkit().launch(launchOptions);
-                break;
-            default:
-                browser = playwright.chromium().launch(launchOptions);
-                break;
+        BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions()
+                .setHeadless(false);
+
+        BrowserType browserType = switch (browserName) {
+            case CHROMIUM, CHROME, EDGE -> playwright.chromium();
+            case FIREFOX                -> playwright.firefox();
+            case WEBKIT, SAFARI         -> playwright.webkit();
+            default -> throw new IllegalArgumentException(UNSUPPORTED + browserName);
+        };
+
+        if (EDGE.equals(browserName)) {
+            launchOptions.setChannel("msedge");
         }
-        System.out.println("Browser: " + browserParam);
 
-        // ── Context & Page ───────────────────────────────────────────
-        browserContext = DeviceConfig.createContext(browser, deviceType);
-        page = browserContext.newPage();
-        page.navigate(getBaseUrl());
-        System.out.println("Setup done.");
+        browser        = browserType.launch(launchOptions);
+        context        = browser.newContext(buildContextOptions());
+        page           = context.newPage();
+        commonSteps    = new CommonSteps(page);
+        convertorSteps = new ConvertorSteps(page);
 
-        commonSteps = new CommonSteps(page, deviceType);
+        page.navigate(BASE_URI);
+        commonSteps.acceptCookiesIfPresent();
     }
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
-        if (page != null) {
-            page.close();
-        }
-        if (browserContext != null) {
-            browserContext.close();
-        }
-        if (browser != null) {
-            browser.close();
-        }
-        if (playwright != null) {
-            playwright.close();
-        }
-        System.out.println("Teardown done.");
+        if (page       != null) page.close();
+        if (context    != null) context.close();
+        if (browser    != null) browser.close();
+        if (playwright != null) playwright.close();
+    }
+
+    private Browser.NewContextOptions buildContextOptions() {
+        Browser.NewContextOptions options = new Browser.NewContextOptions();
+        return switch (deviceType) {
+            case DESKTOP -> options.setViewportSize(1920, 1080);
+            case MOBILE  -> options
+                    .setViewportSize(430, 932)
+                    .setIsMobile(true)
+                    .setHasTouch(true)
+                    .setDeviceScaleFactor(3);
+            default -> throw new IllegalArgumentException(UNSUPPORTED + deviceType);
+        };
     }
 }
