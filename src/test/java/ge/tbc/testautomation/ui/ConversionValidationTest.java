@@ -1,17 +1,14 @@
 package ge.tbc.testautomation.ui;
 
 import ge.tbc.testautomation.BaseTest;
-
 import ge.tbc.testautomation.data.CurrencyDataProvider;
-import org.testng.annotations.Test;
-
 import ge.tbc.testautomation.util.RetryAnalyzer;
 import ge.tbc.testautomation.util.RetryCount;
+import org.testng.annotations.Test;
 
+public class ConversionValidationTest extends BaseTest {
 
-public class CurrencyExchangeTest extends BaseTest {
-
-    protected CurrencyExchangeTest(String browser, String deviceType) {
+    protected ConversionValidationTest(String browser, String deviceType) {
         super(browser, deviceType);
     }
 
@@ -36,7 +33,7 @@ public class CurrencyExchangeTest extends BaseTest {
     }
 
     @Test(description = "Verify currency conversion across multiple amounts",
-            priority = 2, dataProvider = "currencyAmounts",
+            priority = 3, dataProvider = "currencyAmounts",
             dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
     @RetryCount(count = 2)
     public void currencyConversionAmounts(String fromCurrency, String toCurrency, double amount) {
@@ -45,19 +42,5 @@ public class CurrencyExchangeTest extends BaseTest {
                 .selectToCurrency(toCurrency)
                 .enterCurrencyAmount(amount)
                 .verifyConversion(amount);
-    }
-
-    @Test(description = "Verify swap button flips currencies and recalculates conversion",
-        priority = 3, dataProvider = "currencyPairs",
-        dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
-    @RetryCount(count = 2)
-    public void currencySwap(String fromCurrency, String toCurrency, double amount) {
-        convertorSteps
-            .selectFromCurrency(fromCurrency)
-            .selectToCurrency(toCurrency)
-            .enterCurrencyAmount(amount)
-            .verifyConversion(amount)
-            .clickSwap()
-            .validateSwap(toCurrency, fromCurrency, amount);
     }
 }

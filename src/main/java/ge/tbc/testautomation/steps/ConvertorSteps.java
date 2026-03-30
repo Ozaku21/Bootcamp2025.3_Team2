@@ -1,7 +1,6 @@
 package ge.tbc.testautomation.steps;
 
 import com.microsoft.playwright.Page;
-
 import ge.tbc.testautomation.pages.ConvertorPage;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -19,61 +18,54 @@ public class ConvertorSteps extends CommonSteps {
 
     @Step("Fill input field with amount: {amount}")
     public ConvertorSteps fillInputField(String amount) {
-        convertorPage.inputField.clear();
-        convertorPage.inputField.fill(amount);
+        convertorPage.currencyInput1.clear();
+        convertorPage.currencyInput1.fill(amount);
         return this;
     }
 
+    @Step("Validate input length is within 16 characters")
     public ConvertorSteps getInputLengthAndValidate() {
-        int length =   convertorPage
-                .inputField
-                .textContent()
-                .trim()
-                .length();
+        int length = convertorPage.currencyInput1.inputValue().trim().length();
         Assert.assertTrue(length <= 16);
         return this;
     }
+
+    @Step("Validate input amount is not negative")
     public ConvertorSteps compareInputAmountAndValidate() {
-        String amount = convertorPage
-                .inputField
-                .textContent()
-                .trim();
-        Assert.assertFalse(amount.contains("-") );
+        String amount = convertorPage.currencyInput1.inputValue().trim();
+        Assert.assertFalse(amount.contains("-"));
         return this;
     }
 
-
-
     @Step("Open currency dropdown at index: {dropdownIndex}")
     public ConvertorSteps openDropdown(int dropdownIndex) {
-        convertorPage
-                .currencyDropdown
-                .nth(dropdownIndex)
-                .click();
+        if (dropdownIndex == 0) {
+            convertorPage.fromCurrencyButton.click();
+        } else {
+            convertorPage.toCurrencyButton.click();
+        }
         return this;
     }
 
     @Step("Select currency: {currency}")
     public ConvertorSteps selectCurrency(String currency) {
-        convertorPage
-                .currencyItem(currency)
-                .click();
+        convertorPage.currencyItem(currency).click();
         return this;
     }
 
     @Step("Select from currency: {currency}")
     public ConvertorSteps selectFromCurrency(String currency) {
         convertorPage.fromCurrencyButton.click();
-        convertorPage.getCurrencyItem(currency).scrollIntoViewIfNeeded();
-        convertorPage.getCurrencyItem(currency).click();
+        convertorPage.currencyItem(currency).scrollIntoViewIfNeeded();
+        convertorPage.currencyItem(currency).click();
         return this;
     }
 
     @Step("Select to currency: {currency}")
     public ConvertorSteps selectToCurrency(String currency) {
         convertorPage.toCurrencyButton.click();
-        convertorPage.getCurrencyItem(currency).scrollIntoViewIfNeeded();
-        convertorPage.getCurrencyItem(currency).click();
+        convertorPage.currencyItem(currency).scrollIntoViewIfNeeded();
+        convertorPage.currencyItem(currency).click();
         return this;
     }
 
@@ -84,13 +76,13 @@ public class ConvertorSteps extends CommonSteps {
     }
 
     @Step("Swap the conversion")
-    public ConvertorSteps clickSwap(){
+    public ConvertorSteps clickSwap() {
         convertorPage.swapButton.click();
         return this;
     }
 
     @Step("Verify the currencies are swapped: {expectedFrom} -> {expectedTo}")
-    public ConvertorSteps validateSwap(String expectedFrom, String expectedTo, double amount){
+    public ConvertorSteps validateSwap(String expectedFrom, String expectedTo, double amount) {
         assertThat(convertorPage.fromCurrencyButton).hasText(expectedFrom);
         assertThat(convertorPage.toCurrencyButton).hasText(expectedTo);
         verifyConversion(amount);

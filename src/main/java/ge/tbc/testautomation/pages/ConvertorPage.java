@@ -7,16 +7,11 @@ public class ConvertorPage extends CommonPage {
 
     public Locator currencyForm,
             currencyRate,
-            currencyInputs,
             currencyInput1,
             currencyInput2,
-            currencyButtons,
             fromCurrencyButton,
             toCurrencyButton,
-            currencyList,
             swapButton,
-            inputField,
-            currencyDropdown,
             currencyElements;
 
     public ConvertorPage(Page page) {
@@ -24,32 +19,14 @@ public class ConvertorPage extends CommonPage {
 
         this.currencyForm = page.locator(".tbcx-pw-exchange-rates-calculator");
         this.currencyRate = page.locator("div.tbcx-pw-exchange-rates-calculator__description");
-        this.currencyInputs = page.locator("div.input-with-label input");
-        this.currencyInput1 = currencyInputs.nth(0);
-        this.currencyInput2 = currencyInputs.nth(1);
-        this.currencyButtons = page.locator("button.tbcx-field.tbcx-bg-color-high");
-        this.fromCurrencyButton = currencyButtons.nth(0);
-        this.toCurrencyButton = currencyButtons.nth(1);
-        this.currencyList = page.locator("div.tbcx-item-list");
+        this.currencyInput1 = page.locator("div.input-with-label input").nth(0);
+        this.currencyInput2 = page.locator("div.input-with-label input").nth(1);
+        this.fromCurrencyButton = page.locator("button.tbcx-field.tbcx-bg-color-high").nth(0);
+        this.toCurrencyButton = page.locator("button.tbcx-field.tbcx-bg-color-high").nth(1);
         this.swapButton = currencyForm.locator(".tbcx-pw-exchange-rates-calculator__swap");
-        this.inputField = page.locator("form input").first();
-        this.currencyDropdown = page.locator("button.tbcx-field");
         this.currencyElements = page.locator(".cdk-overlay-pane .tbcx-dropdown-popover-item__title");
+    }
 
-
-    }
-    public Locator getVisibleCurrencyList() {
-        currencyList.first().waitFor();
-        for (Locator loc : currencyList.all()) {
-            if (loc.isVisible()) {
-                return loc;
-            }
-        }
-        return currencyList.first();
-    }
-    public Locator getCurrencyItem(String currency) {
-        return getVisibleCurrencyList().getByText(currency).first();
-    }
     public Locator currencyItem(String currency) {
         return currencyElements.getByText(currency, new Locator.GetByTextOptions().setExact(true));
     }

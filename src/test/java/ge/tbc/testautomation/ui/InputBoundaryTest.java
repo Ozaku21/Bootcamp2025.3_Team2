@@ -29,10 +29,8 @@ public class InputBoundaryTest extends BaseTest {
     @Test(priority = 2)
     public void selectCurrency() {
         convertorSteps
-                .openDropdown(0)
-                .selectCurrency(GEL)
-                .openDropdown(1)
-                .selectCurrency(EUR);
+                .selectFromCurrency(GEL)
+                .selectToCurrency(EUR);
     }
 
     @Story("Enter amount for conversion")
