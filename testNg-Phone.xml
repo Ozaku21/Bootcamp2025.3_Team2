@@ -3,9 +3,9 @@
 <suite name="TBC Playwright Test Suite" parallel="tests" thread-count="2" verbose="1">
     <test name="Phone">
         <parameter name="browser" value="chromium"/>
-        <parameter name="deviceType" value="MOBILE"/>
+        <parameter name="deviceType" value="mobile"/>
         <classes>
-            <class name="ge.tbc.testautomation.ui.CurrencyExchangeTest"/>
+            <class name="ge.tbc.testautomation.ui.Executor"/>
         </classes>
     </test>
 </suite>

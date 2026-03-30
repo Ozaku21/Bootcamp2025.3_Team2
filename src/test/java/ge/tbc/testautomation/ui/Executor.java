@@ -16,6 +16,8 @@ public class Executor {
 
         return new Object[]{
                 new CurrencyExchangeTest(browser, deviceType),
+                new InputBoundaryTest(browser, deviceType),
+                new InvalidInputTest(browser, deviceType)
         };
     }
 }

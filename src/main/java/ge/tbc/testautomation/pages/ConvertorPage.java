@@ -14,10 +14,13 @@ public class ConvertorPage extends CommonPage {
             fromCurrencyButton,
             toCurrencyButton,
             currencyList,
-            swapButton;
+            swapButton,
+            inputField,
+            currencyDropdown,
+            currencyElements;
 
-    public ConvertorPage(Page page, String deviceType) {
-        super(page, deviceType);
+    public ConvertorPage(Page page) {
+        super(page);
 
         this.currencyForm = page.locator(".tbcx-pw-exchange-rates-calculator");
         this.currencyRate = page.locator("div.tbcx-pw-exchange-rates-calculator__description");
@@ -29,8 +32,12 @@ public class ConvertorPage extends CommonPage {
         this.toCurrencyButton = currencyButtons.nth(1);
         this.currencyList = page.locator("div.tbcx-item-list");
         this.swapButton = currencyForm.locator(".tbcx-pw-exchange-rates-calculator__swap");
-    }
+        this.inputField = page.locator("form input").first();
+        this.currencyDropdown = page.locator("button.tbcx-field");
+        this.currencyElements = page.locator(".cdk-overlay-pane .tbcx-dropdown-popover-item__title");
 
+
+    }
     public Locator getVisibleCurrencyList() {
         currencyList.first().waitFor();
         for (Locator loc : currencyList.all()) {
@@ -40,8 +47,10 @@ public class ConvertorPage extends CommonPage {
         }
         return currencyList.first();
     }
-
     public Locator getCurrencyItem(String currency) {
         return getVisibleCurrencyList().getByText(currency).first();
+    }
+    public Locator currencyItem(String currency) {
+        return currencyElements.getByText(currency, new Locator.GetByTextOptions().setExact(true));
     }
 }

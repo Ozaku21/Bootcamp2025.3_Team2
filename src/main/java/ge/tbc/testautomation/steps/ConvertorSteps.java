@@ -12,9 +12,53 @@ public class ConvertorSteps extends CommonSteps {
 
     ConvertorPage convertorPage;
 
-    public ConvertorSteps(Page page, String deviceType) {
-        super(page, deviceType);
-        convertorPage = new ConvertorPage(page, deviceType);
+    public ConvertorSteps(Page page) {
+        super(page);
+        this.convertorPage = new ConvertorPage(page);
+    }
+
+    @Step("Fill input field with amount: {amount}")
+    public ConvertorSteps fillInputField(String amount) {
+        convertorPage.inputField.clear();
+        convertorPage.inputField.fill(amount);
+        return this;
+    }
+
+    public ConvertorSteps getInputLengthAndValidate() {
+        int length =   convertorPage
+                .inputField
+                .textContent()
+                .trim()
+                .length();
+        Assert.assertTrue(length <= 16);
+        return this;
+    }
+    public ConvertorSteps compareInputAmountAndValidate() {
+        String amount = convertorPage
+                .inputField
+                .textContent()
+                .trim();
+        Assert.assertFalse(amount.contains("-") );
+        return this;
+    }
+
+
+
+    @Step("Open currency dropdown at index: {dropdownIndex}")
+    public ConvertorSteps openDropdown(int dropdownIndex) {
+        convertorPage
+                .currencyDropdown
+                .nth(dropdownIndex)
+                .click();
+        return this;
+    }
+
+    @Step("Select currency: {currency}")
+    public ConvertorSteps selectCurrency(String currency) {
+        convertorPage
+                .currencyItem(currency)
+                .click();
+        return this;
     }
 
     @Step("Select from currency: {currency}")

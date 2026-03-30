@@ -51,8 +51,8 @@ public class BaseTest {
         browser        = browserType.launch(launchOptions);
         context        = browser.newContext(buildContextOptions());
         page           = context.newPage();
-        commonSteps    = new CommonSteps(page, deviceType);
-        convertorSteps = new ConvertorSteps(page, deviceType);
+        commonSteps    = new CommonSteps(page);
+        convertorSteps = new ConvertorSteps(page);
 
         page.navigate(BASE_URI);
         commonSteps.acceptCookiesIfPresent();
@@ -75,7 +75,7 @@ public class BaseTest {
                     .setIsMobile(true)
                     .setHasTouch(true)
                     .setDeviceScaleFactor(3);
-            default -> throw new IllegalArgumentException("Unsupported device type: " + deviceType);
+            default -> throw new IllegalArgumentException(UNSUPPORTED + deviceType);
         };
     }
 }

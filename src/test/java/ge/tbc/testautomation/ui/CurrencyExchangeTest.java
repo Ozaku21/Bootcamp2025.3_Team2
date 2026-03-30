@@ -17,10 +17,10 @@ public class CurrencyExchangeTest extends BaseTest {
 
     @Test(description = "Navigate to the currency exchange page", priority = 1, retryAnalyzer = RetryAnalyzer.class)
     @RetryCount(count = 1)
-    public void NavigateToCurrencyExchangePage() {
+    public void navigateToCurrencyConvertorPage() {
         commonSteps
-            .openPersonalNavigation()
-            .clickCurrencyExchangeLink();
+                .clickKebabMenu()
+                .clickCurrencyLariOutlined();
     }
 
     @Test(description = "Verify currency conversion across multiple currency pairs",
