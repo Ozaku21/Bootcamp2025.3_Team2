@@ -60,7 +60,6 @@ Scenarios run through a TestNG factory (`Executor`) and are executed for configu
 
 - Java 17 installed
 - Maven installed
-- Internet access (first Playwright run may download browser binaries)
 
 ### Run all tests
 
