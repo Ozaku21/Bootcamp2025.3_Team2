@@ -66,11 +66,19 @@ Scenarios run through a TestNG factory (`Executor`) and are executed for configu
 
 ```bash
 mvn clean test
- - Run using TestNG suite file
-mvn clean test -Dsurefire.suiteXmlFiles=testNg.xml
- - Generate and view Allure report
-mvn allure:report
-mvn allure:serve
+```
+
+- Run using TestNG suite file
+
+```bash
+  mvn clean test -Dsurefire.suiteXmlFiles=testNg.xml
+```
+
+- Generate and view Allure report
+
+```bash
+  mvn allure:report
+  mvn allure:serve
 ```
 
 ## CI/CD Link
@@ -78,3 +86,7 @@ mvn allure:serve
 ## AI Summary
 
 ## Bug Summary
+
+```
+
+```
