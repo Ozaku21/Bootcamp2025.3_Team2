@@ -10,8 +10,8 @@
         </classes>
     </test>
 
-    <test name="Edge Desktop">
-        <parameter name="browser" value="edge"/>
+    <test name="Firefox Desktop">
+        <parameter name="browser" value="firefox"/>
         <parameter name="deviceType" value="desktop"/>
         <classes>
             <class name="ge.tbc.testautomation.ui.Executor"/>
