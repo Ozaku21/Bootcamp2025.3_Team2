@@ -4,15 +4,21 @@ import ge.tbc.testautomation.BaseTest;
 import ge.tbc.testautomation.data.CurrencyDataProvider;
 import ge.tbc.testautomation.util.RetryAnalyzer;
 import ge.tbc.testautomation.util.RetryCount;
+import io.qameta.allure.*;
 import org.testng.annotations.Test;
 
+@Epic("Currency Module")
+@Feature("Currency Converter")
+@Test(groups = {"Scenario - Validate Currency Conversion - TP-T3"})
 public class ConversionValidationTest extends BaseTest {
 
     protected ConversionValidationTest(String browser, String deviceType) {
         super(browser, deviceType);
     }
 
-    @Test(description = "Navigate to the currency exchange page", priority = 1, retryAnalyzer = RetryAnalyzer.class)
+    @Story("Navigate to currency converter page")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(priority = 1, retryAnalyzer = RetryAnalyzer.class)
     @RetryCount(count = 1)
     public void navigateToCurrencyConvertorPage() {
         commonSteps
@@ -20,9 +26,9 @@ public class ConversionValidationTest extends BaseTest {
                 .clickCurrencyLariOutlined();
     }
 
-    @Test(description = "Verify currency conversion across multiple currency pairs",
-            priority = 2, dataProvider = "currencyPairs",
-            dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
+    @Story("Validate conversion across currency pairs")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test(priority = 2, dataProvider = "currencyPairs", dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
     @RetryCount(count = 2)
     public void currencyConversionPairs(String fromCurrency, String toCurrency, double amount) {
         convertorSteps
@@ -32,9 +38,9 @@ public class ConversionValidationTest extends BaseTest {
                 .verifyConversion(amount);
     }
 
-    @Test(description = "Verify currency conversion across multiple amounts",
-            priority = 3, dataProvider = "currencyAmounts",
-            dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
+    @Story("Validate conversion across various amounts")
+    @Severity(SeverityLevel.NORMAL)
+    @Test(priority = 3, dataProvider = "currencyAmounts", dataProviderClass = CurrencyDataProvider.class, retryAnalyzer = RetryAnalyzer.class)
     @RetryCount(count = 2)
     public void currencyConversionAmounts(String fromCurrency, String toCurrency, double amount) {
         convertorSteps

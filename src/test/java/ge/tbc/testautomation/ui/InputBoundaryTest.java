@@ -1,7 +1,8 @@
 package ge.tbc.testautomation.ui;
 
 import ge.tbc.testautomation.BaseTest;
-
+import ge.tbc.testautomation.util.RetryAnalyzer;
+import ge.tbc.testautomation.util.RetryCount;
 import io.qameta.allure.*;
 import org.testng.annotations.Test;
 import static ge.tbc.testautomation.data.Constants.*;
@@ -17,7 +18,8 @@ public class InputBoundaryTest extends BaseTest {
 
     @Story("Navigate to currency converter page")
     @Severity(SeverityLevel.NORMAL)
-    @Test(priority = 1)
+    @Test(priority = 1, retryAnalyzer = RetryAnalyzer.class)
+    @RetryCount(count = 1)
     public void navigateToCurrencyConvertorPage() {
         commonSteps
                 .clickKebabMenu()
@@ -26,7 +28,8 @@ public class InputBoundaryTest extends BaseTest {
 
     @Story("Select GEL to EUR currency conversion")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 2)
+    @Test(priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    @RetryCount(count = 2)
     public void selectCurrency() {
         convertorSteps
                 .selectFromCurrency(GEL)
@@ -35,7 +38,8 @@ public class InputBoundaryTest extends BaseTest {
 
     @Story("Enter amount for conversion")
     @Severity(SeverityLevel.NORMAL)
-    @Test(priority = 3)
+    @Test(priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    @RetryCount(count = 1)
     public void enterAmount() {
         convertorSteps
                 .fillInputField(AMOUNT);
@@ -43,7 +47,8 @@ public class InputBoundaryTest extends BaseTest {
 
     @Story("Verify Boundary")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 4)
+    @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    @RetryCount(count = 2)
     public void verifyBoundary() {
         convertorSteps
                 .getInputLengthAndValidate();
