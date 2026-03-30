@@ -7,6 +7,7 @@ public class Constants {
     public static final double AMOUNT_TO_CONVERT = 217.0;
     public static final String INVALID_AMOUNT    = "-265";
     public static final String AMOUNT           = "9999999993339999999999999988";
+    public static final String NON_NUMERIC = "non-numeric";
 
     // ── Browsers ──────────────────────────────────────────────────────
     public static final String BROWSER    = "browser";

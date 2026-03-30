@@ -18,7 +18,8 @@ public class Executor {
                 new InvalidInputTest(browser, deviceType),
                 new ConversionValidationTest(browser, deviceType),
                 new ConversionSwapTest(browser, deviceType),
-                new InputBoundaryTest(browser, deviceType)
+                new InputBoundaryTest(browser, deviceType),
+                new NonNumericInputTest(browser, deviceType)
         };
     }
 }

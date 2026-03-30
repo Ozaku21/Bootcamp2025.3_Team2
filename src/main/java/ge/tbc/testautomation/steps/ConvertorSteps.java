@@ -75,6 +75,22 @@ public class ConvertorSteps extends CommonSteps {
         return this;
     }
 
+    @Step("Enter non-numeric data")
+    public ConvertorSteps enterNonNumericData(String nonNumericData) {
+        convertorPage.currencyInput1.clear();
+        convertorPage.currencyInput1.fill(nonNumericData);
+        return this;
+    }
+
+    @Step("validate the input did not accept non numeric data")
+    public ConvertorSteps validateInputDidNotAcceptNonNumericData() {
+        String actualValue = convertorPage.currencyInput1.inputValue().trim();
+        Assert.assertTrue(actualValue.isEmpty(),
+                "Input field accepted invalid characters. Field value: " + actualValue);
+
+        return this;
+    }
+
     @Step("Swap the conversion")
     public ConvertorSteps clickSwap() {
         convertorPage.swapButton.click();
