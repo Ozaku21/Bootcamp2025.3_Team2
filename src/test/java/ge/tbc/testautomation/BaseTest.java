@@ -82,11 +82,11 @@ public class BaseTest {
     @AfterMethod(alwaysRun = true)
     public void captureScreenshotOnFailure(ITestResult result) throws Exception {
         if (!result.isSuccess() && page != null && !page.isClosed()) {
-            String testName = result.getMethod().getMethodName();
+            byte[] screenshotBytes = page.screenshot(
+                    new Page.ScreenshotOptions().setFullPage(true)
+            );
 
-            String fileName = testName + "-" + browserName + "-" + System.currentTimeMillis();
-
-            ScreenshotUtil.attachFailureScreenshot(page, fileName, browserName);
+            ScreenshotUtil.attachFailureScreenshot(screenshotBytes);
         }
     }
 

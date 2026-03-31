@@ -25,8 +25,6 @@ public class ConversionSwapTest extends BaseTest {
         commonSteps
                 .clickKebabMenu()
                 .clickCurrencyLariOutlined();
-        // TEMP: force failure to test screenshot
-        Assert.fail("Test failure for screenshot check");
     }
 
     @Story("Swap currencies and validate recalculation")
