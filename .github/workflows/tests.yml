@@ -47,7 +47,7 @@ jobs:
         run: mvn -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps chromium" exec:java
 
       - name: Run tests
-        run: mvn clean test -Dsurefire.suiteXmlFiles=testng.xml
+        run: mvn clean test -Dsurefire.suiteXmlFiles=testNg.xml
 
       - name: Generate Allure report
         if: always()
