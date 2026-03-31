@@ -52,8 +52,8 @@ jobs:
           sudo mv allure-2.29.0 /opt/allure
           sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
 
-      - name: Install Playwright Chromium
-        run: mvn -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps chromium" exec:java
+      - name: Install Playwright browsers
+        run: mvn -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps" exec:java
 
       - name: Run tests
         run: mvn clean test -Dsurefire.suiteXmlFiles=testNg.xml
