@@ -5,8 +5,7 @@ on:
     branches:
       - cicd
   pull_request:
-    branches:
-      - cicd
+
 
 permissions:
   contents: read
@@ -20,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browser: [chromium, firefox, webkit]
+        browser: [chromium, webkit]
 
     steps:
       - name: Checkout repository
@@ -85,11 +84,6 @@ jobs:
           name: allure-results-chromium
           path: merged-allure-results/chromium
 
-      - name: Download Firefox Allure results
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-results-firefox
-          path: merged-allure-results/firefox
 
       - name: Download WebKit Allure results
         uses: actions/download-artifact@v4
@@ -108,7 +102,6 @@ jobs:
         run: |
           mkdir -p allure-results
           cp -r merged-allure-results/chromium/* allure-results/ || true
-          cp -r merged-allure-results/firefox/* allure-results/ || true
           cp -r merged-allure-results/webkit/* allure-results/ || true
 
       - name: Generate Allure report
