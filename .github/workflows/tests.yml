@@ -3,7 +3,7 @@ name: Java Playwright Tests with Allure
 on:
   push:
     branches:
-      - CI/CD
+      - main
   pull_request:
 
 permissions:
@@ -90,7 +90,7 @@ jobs:
           path: allure-report/
 
   deploy:
-    if: github.ref == 'refs/heads/CI/CD'
+    if: github.ref == 'refs/heads/main'
     needs: test
     runs-on: ubuntu-latest
     environment:
