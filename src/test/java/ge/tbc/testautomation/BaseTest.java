@@ -35,7 +35,7 @@ public class BaseTest {
         playwright = Playwright.create();
 
         BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions()
-                .setHeadless(false);
+                .setHeadless(true);
 
         BrowserType browserType = switch (browserName) {
             case CHROMIUM, CHROME, EDGE -> playwright.chromium();
