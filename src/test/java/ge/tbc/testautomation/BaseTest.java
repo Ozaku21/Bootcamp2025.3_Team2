@@ -26,8 +26,9 @@ public class BaseTest {
         this.deviceType  = deviceType.toLowerCase();
     }
 
-    protected BaseTest() {
-        this(CHROMIUM, DESKTOP);
+    public BaseTest() {
+        this.browserName = System.getProperty("browser", CHROMIUM).toLowerCase();
+        this.deviceType = System.getProperty("device", DESKTOP).toLowerCase();
     }
 
     @BeforeClass(alwaysRun = true)
