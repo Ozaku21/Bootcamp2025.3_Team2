@@ -81,8 +81,8 @@ mvn clean test
 ```
 
 ## CI/CD Link and Summary
-https://github.com/Ozaku21/Bootcamp2025.3_Team2/actions/runs/23794237474
-Pages link for allure report : https://ozaku21.github.io/Bootcamp2025.3_Team2/
+Link to the actions page (where the pipelines are):
+https://github.com/Ozaku21/Bootcamp2025.3_Team2/actions/workflows/tests.yml
 
 This project uses GitHub Actions to automatically run tests on every push and pull request.
 The pipeline sets up Java, installs dependencies and Playwright browsers, executes TestNG tests,
