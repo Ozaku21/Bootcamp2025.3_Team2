@@ -3,7 +3,10 @@ package ge.tbc.testautomation;
 import com.microsoft.playwright.*;
 import ge.tbc.testautomation.steps.CommonSteps;
 import ge.tbc.testautomation.steps.ConvertorSteps;
+import ge.tbc.testautomation.util.ScreenshotUtil;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
 import static ge.tbc.testautomation.data.Constants.*;
@@ -74,6 +77,17 @@ public class BaseTest {
         if (context    != null) context.close();
         if (browser    != null) browser.close();
         if (playwright != null) playwright.close();
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void captureScreenshotOnFailure(ITestResult result) throws Exception {
+        if (!result.isSuccess() && page != null && !page.isClosed()) {
+            String testName = result.getMethod().getMethodName();
+
+            String fileName = testName + "-" + browserName + "-" + System.currentTimeMillis();
+
+            ScreenshotUtil.attachFailureScreenshot(page, fileName, browserName);
+        }
     }
 
     private Browser.NewContextOptions buildContextOptions() {

@@ -10,13 +10,6 @@
         </classes>
     </test>
 
-    <test name="WebKit Desktop">
-        <parameter name="browser" value="webkit"/>
-        <parameter name="deviceType" value="desktop"/>
-        <classes>
-            <class name="ge.tbc.testautomation.ui.Executor"/>
-        </classes>
-    </test>
 
     <test name="Phone">
         <parameter name="browser" value="chromium"/>
