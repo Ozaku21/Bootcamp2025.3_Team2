@@ -93,7 +93,3 @@ providing a live, shareable view of test results for the team.
 ## AI Summary
 
 ## Bug Summary
-
-```
-
-```
