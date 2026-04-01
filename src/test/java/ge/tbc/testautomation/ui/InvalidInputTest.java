@@ -9,7 +9,7 @@ import static ge.tbc.testautomation.data.Constants.*;
 
 @Epic("Currency Module")
 @Feature("Currency Converter")
-@Test(groups = {"Scenario - Validate Invalid Input - TP-T1"})
+@Test(groups = {"Scenario - Validate Invalid Input in Currency Converter - SCRUM-T4"})
 public class InvalidInputTest extends BaseTest {
 
     protected InvalidInputTest(String browserName, String deviceType) {

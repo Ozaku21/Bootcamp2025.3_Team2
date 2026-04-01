@@ -10,7 +10,7 @@ import static ge.tbc.testautomation.data.Constants.*;
 
 @Epic("Currency Module")
 @Feature("Currency Converter")
-@Test(groups = {"Scenario - Validate currency input doesn't accept non-numeric value - TP-T4"})
+@Test(groups = {"Scenario - Verify Non-Numeric Character Restriction in Amount Field - SCRUM-T5"})
 public class NonNumericInputTest extends BaseTest {
 
     protected NonNumericInputTest(String browser, String deviceType) {

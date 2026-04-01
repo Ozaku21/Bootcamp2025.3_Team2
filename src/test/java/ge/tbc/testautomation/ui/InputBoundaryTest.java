@@ -9,7 +9,7 @@ import static ge.tbc.testautomation.data.Constants.*;
 
 @Epic("Currency Module")
 @Feature("Currency Converter")
-@Test(groups = {"Scenario - Validate Conventor Boundary - TP-T1"})
+@Test(groups = {"Scenario - Validate Conventor Boundary - SCRUM-T3"})
 public class InputBoundaryTest extends BaseTest {
 
     protected InputBoundaryTest(String browserName, String deviceType) {

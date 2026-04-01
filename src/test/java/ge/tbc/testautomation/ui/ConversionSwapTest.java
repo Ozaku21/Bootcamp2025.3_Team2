@@ -10,7 +10,7 @@ import ge.tbc.testautomation.util.RetryCount;
 
 @Epic("Currency Module")
 @Feature("Currency Converter")
-@Test(groups = {"Scenario - Validate Currency Swap - TP-T2"})
+@Test(groups = {"Scenario - Validate Currency Swap and Recalculation - SCRUM-T1"})
 public class ConversionSwapTest extends BaseTest {
 
     protected ConversionSwapTest(String browser, String deviceType) {

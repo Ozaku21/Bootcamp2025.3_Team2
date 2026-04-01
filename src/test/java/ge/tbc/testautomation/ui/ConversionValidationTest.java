@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 @Epic("Currency Module")
 @Feature("Currency Converter")
-@Test(groups = {"Scenario - Validate Currency Conversion - TP-T3"})
+@Test(groups = {"Scenario - Validate Currency Conversion - SCRUM-T2"})
 public class ConversionValidationTest extends BaseTest {
 
     protected ConversionValidationTest(String browser, String deviceType) {
