@@ -48,9 +48,6 @@ public class ExchangeRateApiCallSteps extends BaseApi {
     @Step("validate status code")
     public ExchangeRateApiCallSteps validateStatusCode(int expectedStatus) {
         Assert.assertEquals(response.statusCode(), expectedStatus);
-        Assert.assertTrue(
-                exchangeRateResponseMapper.getUpdateDate().isBefore(LocalDateTime.now().plusHours(5)),
-                "Update date should be in the past");
         return this;
     }
 

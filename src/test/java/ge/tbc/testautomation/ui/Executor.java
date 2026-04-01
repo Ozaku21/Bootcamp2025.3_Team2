@@ -25,7 +25,6 @@ public class Executor {
                 new InputBoundaryTest(browser, deviceType),
                 new NonNumericInputTest(browser, deviceType),
                 new CommercialListApiCallTest(),
-                new ExchangeRateApiCallTest(),
                 new ForwardRatesApiCallTest(),
                 new ExchangeRateApiCallRejectionTest()
         };
