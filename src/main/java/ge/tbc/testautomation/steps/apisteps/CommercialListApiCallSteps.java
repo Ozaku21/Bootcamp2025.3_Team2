@@ -1,8 +1,8 @@
 package ge.tbc.testautomation.steps.apisteps;
 
 import ge.tbc.testautomation.api.client.BaseApi;
-import ge.tbc.testautomation.api.models.responses.CommercialListResponse;
-import ge.tbc.testautomation.api.models.responses.CurrencyRate;
+import ge.tbc.testautomation.data.models.responses.CommercialListResponse;
+import ge.tbc.testautomation.data.models.responses.CurrencyRate;
 import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;

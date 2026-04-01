@@ -1,9 +1,9 @@
 package ge.tbc.testautomation.steps.apisteps;
 
 import ge.tbc.testautomation.api.client.BaseApi;
-import ge.tbc.testautomation.api.models.responses.ForwardRate;
-import ge.tbc.testautomation.api.models.responses.ForwardRateDetail;
-import ge.tbc.testautomation.api.models.responses.ForwardRatesResponse;
+import ge.tbc.testautomation.data.models.responses.ForwardRate;
+import ge.tbc.testautomation.data.models.responses.ForwardRateDetail;
+import ge.tbc.testautomation.data.models.responses.ForwardRatesResponse;
 import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;

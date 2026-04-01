@@ -1,9 +1,9 @@
-package ge.tbc.testautomation.api.models.responses;
+package ge.tbc.testautomation.data.models.responses;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import ge.tbc.testautomation.api.models.deserializers.OffsetDateTimeDeserializer;
+import ge.tbc.testautomation.data.models.deserializers.OffsetDateTimeDeserializer;
 import lombok.Getter;
 import lombok.Setter;
 

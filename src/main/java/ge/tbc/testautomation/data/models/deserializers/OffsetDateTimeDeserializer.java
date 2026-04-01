@@ -1,4 +1,4 @@
-package ge.tbc.testautomation.api.models.deserializers;
+package ge.tbc.testautomation.data.models.deserializers;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

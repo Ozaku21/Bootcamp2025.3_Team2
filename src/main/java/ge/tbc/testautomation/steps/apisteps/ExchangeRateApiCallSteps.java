@@ -1,7 +1,7 @@
 package ge.tbc.testautomation.steps.apisteps;
 
 import ge.tbc.testautomation.api.client.BaseApi;
-import ge.tbc.testautomation.api.models.responses.ExchangeRateResponse;
+import ge.tbc.testautomation.data.models.responses.ExchangeRateResponse;
 import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
@@ -9,7 +9,6 @@ import org.testng.Assert;
 
 import java.time.LocalDateTime;
 
-import static ge.tbc.testautomation.data.Constants.*;
 import static io.restassured.RestAssured.given;
 
 public class ExchangeRateApiCallSteps extends BaseApi {
