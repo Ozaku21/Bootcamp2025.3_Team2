@@ -93,3 +93,16 @@ providing a live, shareable view of test results for the team.
 ## AI Summary
 
 ## Bug Summary
+Link to the bug report 1: https://dachikazo.atlassian.net/browse/SCRUM-5?atlOrigin=eyJpIjoiNDNjOGZmZmRiNTNmNDcwNDgxOTZhOGNjYTg0OGQ3NzUiLCJwIjoiaiJ9
+
+SCRUM-5: The currency converter fails to handle empty input states during a "Swap" action, resulting in a "NaN" error being displayed in the input fields.
+Description: Clicking the "Swap" button when the input is empty triggers a technical "NaN" (Not a Number) error.
+
+Expected Result: The field should remain empty or default to "0" without showing technical errors.
+
+Link to the bug report 2: https://dachikazo.atlassian.net/browse/SCRUM-6?atlOrigin=eyJpIjoiZjFkMDBkYzY2NGQ1NGJhZmFmYzQ3YmFiNWVlODZmMTMiLCJwIjoiaiJ9
+
+SCRUM-6: Currency Converter field fails to accept or process decimal values
+Description: The input field restricts the use of decimal separators (dots or commas), preventing precise calculations.
+
+Expected Result: The system should support decimal inputs (e.g., 12.4 or 23.4) for accurate currency conversion
