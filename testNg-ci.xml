@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="TBC Playwright Currency Exchange Test Suite" parallel="tests" thread-count="2" verbose="1">
+
+    <test name="Chromium Desktop">
+        <parameter name="browser" value="chromium"/>
+        <parameter name="deviceType" value="desktop"/>
+        <classes>
+            <class name="ge.tbc.testautomation.ui.Executor"/>
+        </classes>
+    </test>
+
+
+    <test name="Phone">
+        <parameter name="browser" value="chromium"/>
+        <parameter name="deviceType" value="mobile"/>
+        <classes>
+            <class name="ge.tbc.testautomation.ui.Executor"/>
+        </classes>
+    </test>
+
+</suite>

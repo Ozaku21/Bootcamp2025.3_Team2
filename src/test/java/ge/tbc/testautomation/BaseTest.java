@@ -3,7 +3,10 @@ package ge.tbc.testautomation;
 import com.microsoft.playwright.*;
 import ge.tbc.testautomation.steps.CommonSteps;
 import ge.tbc.testautomation.steps.ConvertorSteps;
+import ge.tbc.testautomation.util.ScreenshotUtil;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
 import static ge.tbc.testautomation.data.Constants.*;
@@ -26,8 +29,9 @@ public class BaseTest {
         this.deviceType  = deviceType.toLowerCase();
     }
 
-    protected BaseTest() {
-        this(CHROMIUM, DESKTOP);
+    public BaseTest() {
+        this.browserName = System.getProperty("browser", CHROMIUM).toLowerCase();
+        this.deviceType = System.getProperty("device", DESKTOP).toLowerCase();
     }
 
     @BeforeClass(alwaysRun = true)
@@ -38,7 +42,16 @@ public class BaseTest {
                 .setHeadless(true);
 
         BrowserType browserType = switch (browserName) {
-            case CHROMIUM, CHROME, EDGE -> playwright.chromium();
+            case CHROMIUM, CHROME, EDGE -> {
+                if (System.getenv("CI") != null) {
+                    launchOptions.setArgs(java.util.List.of(
+                            "--no-sandbox",
+                            "--disable-dev-shm-usage",
+                            "--disable-gpu"
+                    ));
+                }
+                yield playwright.chromium();
+            }
             case FIREFOX                -> playwright.firefox();
             case WEBKIT, SAFARI         -> playwright.webkit();
             default -> throw new IllegalArgumentException(UNSUPPORTED + browserName);
@@ -64,6 +77,17 @@ public class BaseTest {
         if (context    != null) context.close();
         if (browser    != null) browser.close();
         if (playwright != null) playwright.close();
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void captureScreenshotOnFailure(ITestResult result) throws Exception {
+        if (!result.isSuccess() && page != null && !page.isClosed()) {
+            byte[] screenshotBytes = page.screenshot(
+                    new Page.ScreenshotOptions().setFullPage(true)
+            );
+
+            ScreenshotUtil.attachFailureScreenshot(screenshotBytes);
+        }
     }
 
     private Browser.NewContextOptions buildContextOptions() {

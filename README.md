@@ -16,7 +16,7 @@ The workflow also includes AI-assisted quality engineering for smarter scenario 
 - Giorgi Kavtaria
 - Nika Amirkhanovi
 - Elene Gabrielashvili
-- Otar Chelidze
+- Otar Tchelidze
 
 ## Team Captain
 
@@ -80,12 +80,16 @@ mvn clean test
   mvn allure:serve
 ```
 
-## CI/CD Link
+## CI/CD Link and Summary
+Link to the actions page (where the pipelines are):
+https://github.com/Ozaku21/Bootcamp2025.3_Team2/actions/workflows/tests.yml
+
+This project uses GitHub Actions to automatically run tests on every push and pull request.
+The pipeline sets up Java, installs dependencies and Playwright browsers, executes TestNG tests,
+and generates an Allure report. 
+The results are uploaded as artifacts, and on the main branch the report is deployed to GitHub Pages,
+providing a live, shareable view of test results for the team.
 
 ## AI Summary
 
 ## Bug Summary
-
-```
-
-```
