@@ -24,6 +24,10 @@ public class Executor {
                 new ConversionSwapTest(browser, deviceType),
                 new InputBoundaryTest(browser, deviceType),
                 new NonNumericInputTest(browser, deviceType),
+                new CommercialListApiCallTest(),
+                new ExchangeRateApiCallTest(),
+                new ForwardRatesApiCallTest(),
+                new ExchangeRateApiCallRejectionTest()
         };
     }
 }
