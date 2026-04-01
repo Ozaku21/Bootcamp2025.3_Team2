@@ -34,6 +34,7 @@ public class BaseApi {
             .setBasePath(TBC_EXCHANGE_RATE_BASE_PATH)
             .setContentType(ContentType.JSON)
             .setAccept(ContentType.JSON)
+            .setConfig(CONFIG)
             .build();
 
     public static final RequestSpecification REQ_EXCHANGE_RATES_FORWARD_RATES = new RequestSpecBuilder()

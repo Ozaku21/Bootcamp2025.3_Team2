@@ -32,7 +32,7 @@ public class ExchangeRateResponse {
     @JsonProperty("currencyWeight")
     private int currencyWeight;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS")
     @JsonProperty("updateDate")
     private LocalDateTime updateDate;
 }
