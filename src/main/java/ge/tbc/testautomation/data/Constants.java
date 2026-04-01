@@ -27,4 +27,12 @@ public class Constants {
     // ── Currencies ────────────────────────────────────────────────────
     public static final String GEL = "GEL";
     public static final String EUR = "EUR";
+
+    // ── Api ────────────────────────────────────────────────────
+    public static final String TBC_BASE_URL = "https://apigw.tbcbank.ge";
+    public static final String TBC_COMMERCIAL_LIST_BASE_PATH = "/api/v1/exchangeRates/commercialList";
+    public static final String TBC_EXCHANGE_RATE_BASE_PATH = "/api/v1/exchangeRates/getExchangeRate";
+    public static final String TBC_FORWARD_RATES_BASE_PATH = "/api/v1/forwardRates/getForwardRates";
+
+    public static final String CURRENCY_NAME = "პოლონური ზლოტი";
 }
