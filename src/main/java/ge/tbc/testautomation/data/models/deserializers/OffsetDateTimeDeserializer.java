@@ -17,7 +17,10 @@ public class OffsetDateTimeDeserializer extends StdDeserializer<OffsetDateTime> 
             .optionalStart()
             .appendFraction(ChronoField.NANO_OF_SECOND, 0, 9, true)
             .optionalEnd()
+            .optionalStart()
             .appendOffsetId()
+            .optionalEnd()
+            .parseDefaulting(ChronoField.OFFSET_SECONDS, 0)
             .toFormatter();
 
     public OffsetDateTimeDeserializer() {

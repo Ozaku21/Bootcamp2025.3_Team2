@@ -8,6 +8,9 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 
 import static io.restassured.RestAssured.given;
 
@@ -48,9 +51,6 @@ public class ExchangeRateApiCallSteps extends BaseApi {
     @Step("validate status code")
     public ExchangeRateApiCallSteps validateStatusCode(int expectedStatus) {
         Assert.assertEquals(response.statusCode(), expectedStatus);
-        Assert.assertTrue(
-                exchangeRateResponseMapper.getUpdateDate().isBefore(LocalDateTime.now().plusHours(5)),
-                "Update date should be in the past");
         return this;
     }
 
@@ -104,9 +104,23 @@ public class ExchangeRateApiCallSteps extends BaseApi {
     public ExchangeRateApiCallSteps validateUpdateDate() {
         Assert.assertNotNull(exchangeRateResponseMapper.getUpdateDate(),
                 "Update date should not be null");
+
+        //correctly labels it as Tbilisi time (+04:00).
+        OffsetDateTime updateDate = exchangeRateResponseMapper.getUpdateDate()
+                .withOffsetSameLocal(ZoneOffset.ofHours(4));
+
+        OffsetDateTime serverNow = OffsetDateTime.parse(
+                response.getHeader("Date"),
+                DateTimeFormatter.RFC_1123_DATE_TIME);
+
         Assert.assertTrue(
-                exchangeRateResponseMapper.getUpdateDate().isBefore(LocalDateTime.now()),
-                "Update date should be in the past");
+                !updateDate.isAfter(serverNow.plusSeconds(60)),
+                "Update date is in the future. Was: " + updateDate + ", Server now: " + serverNow);
+
+        Assert.assertTrue(
+                updateDate.isAfter(serverNow.minusHours(24)),
+                "Update date is too old. Was: " + updateDate + ", Server now: " + serverNow);
+
         return this;
     }
 
