@@ -1,7 +1,6 @@
 package ge.tbc.testautomation;
 
 import com.microsoft.playwright.*;
-import ge.tbc.testautomation.api.CommercialListApiCallTest;
 import ge.tbc.testautomation.steps.CommonSteps;
 import ge.tbc.testautomation.steps.ConvertorSteps;
 import ge.tbc.testautomation.steps.apisteps.CommercialListApiCallSteps;
@@ -69,9 +68,11 @@ public class BaseTest {
         exchangeRateApiCallSteps = new ExchangeRateApiCallSteps();
         apiSteps = new ForwardRatesApiCallSteps();
 
-
-
         page.navigate(BASE_URI);
+        acceptCookies();
+    }
+
+    public void acceptCookies(){
         commonSteps.acceptCookiesIfPresent();
     }
 

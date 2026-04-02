@@ -1,14 +1,11 @@
 package ge.tbc.testautomation.api;
 import io.qameta.allure.*;
-import ge.tbc.testautomation.steps.apisteps.ForwardRatesApiCallSteps;
 import org.testng.annotations.Test;
 
 @Epic("Currency Module")
 @Feature("Currency Converter")
 @Test(groups={"Validate Successful Forward Rates Retrieval - SCRUM-T9", "ApiTests"})
-public class ForwardRatesApiCallTest {
-
-    private ForwardRatesApiCallSteps apiSteps = new ForwardRatesApiCallSteps();
+public class ForwardRatesApiCallTest extends ApiBaseTest {
 
     @Test(description = "validate successful commercial list api call")
     public void forwardRatesApiCall(){
