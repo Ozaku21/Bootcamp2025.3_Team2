@@ -1,8 +1,12 @@
 package ge.tbc.testautomation;
 
 import com.microsoft.playwright.*;
+import ge.tbc.testautomation.api.CommercialListApiCallTest;
 import ge.tbc.testautomation.steps.CommonSteps;
 import ge.tbc.testautomation.steps.ConvertorSteps;
+import ge.tbc.testautomation.steps.apisteps.CommercialListApiCallSteps;
+import ge.tbc.testautomation.steps.apisteps.ExchangeRateApiCallSteps;
+import ge.tbc.testautomation.steps.apisteps.ForwardRatesApiCallSteps;
 import ge.tbc.testautomation.util.ScreenshotUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -20,6 +24,9 @@ public class BaseTest {
 
     protected CommonSteps commonSteps;
     protected ConvertorSteps convertorSteps;
+    protected CommercialListApiCallSteps commercialListApiCallSteps;
+    protected ExchangeRateApiCallSteps exchangeRateApiCallSteps;
+    protected ForwardRatesApiCallSteps apiSteps;
 
     private final String browserName;
     private final String deviceType;
@@ -55,8 +62,14 @@ public class BaseTest {
         browser        = browserType.launch(launchOptions);
         context        = browser.newContext(buildContextOptions());
         page           = context.newPage();
+
         commonSteps    = new CommonSteps(page);
         convertorSteps = new ConvertorSteps(page);
+        commercialListApiCallSteps = new CommercialListApiCallSteps();
+        exchangeRateApiCallSteps = new ExchangeRateApiCallSteps();
+        apiSteps = new ForwardRatesApiCallSteps();
+
+
 
         page.navigate(BASE_URI);
         commonSteps.acceptCookiesIfPresent();

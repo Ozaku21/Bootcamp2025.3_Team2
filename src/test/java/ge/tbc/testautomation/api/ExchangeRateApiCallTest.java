@@ -1,14 +1,14 @@
 package ge.tbc.testautomation.api;
-
-import ge.tbc.testautomation.steps.apisteps.ExchangeRateApiCallSteps;
+import ge.tbc.testautomation.BaseTest;
+import io.qameta.allure.*;
 import org.testng.annotations.Test;
 
 import static ge.tbc.testautomation.data.Constants.*;
 
-@Test(groups={"[Successful Api call of exchange rates]", "ApiTests"})
-public class ExchangeRateApiCallTest {
-
-    private ExchangeRateApiCallSteps exchangeRateApiCallSteps = new ExchangeRateApiCallSteps();
+@Epic("Currency Module")
+@Feature("Currency Converter")
+@Test(groups={"Validate Successful Exchange Rate Calculation - SCRUM-T8", "ApiTests"})
+public class ExchangeRateApiCallTest extends BaseTest {
 
     @Test(description = "validate successful exchange rates api call")
     public void exchangeRateApiCall(){

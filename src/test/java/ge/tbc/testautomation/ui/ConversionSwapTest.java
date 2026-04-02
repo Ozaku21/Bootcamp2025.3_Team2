@@ -2,8 +2,8 @@ package ge.tbc.testautomation.ui;
 
 import ge.tbc.testautomation.BaseTest;
 import ge.tbc.testautomation.data.CurrencyDataProvider;
+import ge.tbc.testautomation.steps.apisteps.ExchangeRateApiCallSteps;
 import io.qameta.allure.*;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ge.tbc.testautomation.util.RetryAnalyzer;
 import ge.tbc.testautomation.util.RetryCount;

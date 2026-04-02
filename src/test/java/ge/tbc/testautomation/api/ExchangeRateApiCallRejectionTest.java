@@ -1,15 +1,16 @@
 package ge.tbc.testautomation.api;
-
-import ge.tbc.testautomation.steps.apisteps.ExchangeRateApiCallSteps;
+import ge.tbc.testautomation.BaseTest;
+import io.qameta.allure.*;
 import org.testng.annotations.Test;
 
 import static ge.tbc.testautomation.data.Constants.EUR;
 import static ge.tbc.testautomation.data.Constants.GEL;
 
-@Test(groups={"[Unsuccessful Api call of exchange rates using same params]", "ApiTests"})
-public class ExchangeRateApiCallRejectionTest {
+@Epic("Currency Module")
+@Feature("Currency Converter")
+@Test(groups={"Validate Exchange Rate Rejection for Identical Parameters - SCRUM-T7", "ApiTests"})
+public class ExchangeRateApiCallRejectionTest extends BaseTest {
 
-    private ExchangeRateApiCallSteps exchangeRateApiCallSteps = new ExchangeRateApiCallSteps();
 
     @Test(description = "validate rejected call for exchange rates with same params")
     public void exchangeRateApiCall(){
