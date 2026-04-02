@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 @Test(groups = {"Scenario - Validate Currency Conversion - SCRUM-T2"})
 public class ConversionValidationTest extends BaseTest {
 
-    protected ConversionValidationTest(String browser, String deviceType) {
+    public ConversionValidationTest(String browser, String deviceType) {
         super(browser, deviceType);
     }
 

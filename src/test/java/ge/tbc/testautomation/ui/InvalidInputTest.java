@@ -12,7 +12,7 @@ import static ge.tbc.testautomation.data.Constants.*;
 @Test(groups = {"Scenario - Validate Invalid Input in Currency Converter - SCRUM-T4"})
 public class InvalidInputTest extends BaseTest {
 
-    protected InvalidInputTest(String browserName, String deviceType) {
+    public InvalidInputTest(String browserName, String deviceType) {
         super(browserName, deviceType);
     }
 

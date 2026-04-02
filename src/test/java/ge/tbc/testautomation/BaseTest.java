@@ -42,16 +42,7 @@ public class BaseTest {
                 .setHeadless(true);
 
         BrowserType browserType = switch (browserName) {
-            case CHROMIUM, CHROME, EDGE -> {
-                if (System.getenv("CI") != null) {
-                    launchOptions.setArgs(java.util.List.of(
-                            "--no-sandbox",
-                            "--disable-dev-shm-usage",
-                            "--disable-gpu"
-                    ));
-                }
-                yield playwright.chromium();
-            }
+            case CHROMIUM, CHROME, EDGE -> playwright.chromium();
             case FIREFOX                -> playwright.firefox();
             case WEBKIT, SAFARI         -> playwright.webkit();
             default -> throw new IllegalArgumentException(UNSUPPORTED + browserName);

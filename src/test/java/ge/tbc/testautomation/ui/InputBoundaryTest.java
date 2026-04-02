@@ -12,7 +12,7 @@ import static ge.tbc.testautomation.data.Constants.*;
 @Test(groups = {"Scenario - Validate Conventor Boundary - SCRUM-T3"})
 public class InputBoundaryTest extends BaseTest {
 
-    protected InputBoundaryTest(String browserName, String deviceType) {
+    public InputBoundaryTest(String browserName, String deviceType) {
         super(browserName, deviceType);
     }
 

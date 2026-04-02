@@ -1,9 +1,10 @@
-package ge.tbc.testautomation.ui;
+package ge.tbc.testautomation;
 
 import ge.tbc.testautomation.api.CommercialListApiCallTest;
 import ge.tbc.testautomation.api.ExchangeRateApiCallRejectionTest;
 import ge.tbc.testautomation.api.ExchangeRateApiCallTest;
 import ge.tbc.testautomation.api.ForwardRatesApiCallTest;
+import ge.tbc.testautomation.ui.*;
 import org.testng.annotations.Factory;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -26,6 +27,7 @@ public class Executor {
                 new NonNumericInputTest(browser, deviceType),
                 new CommercialListApiCallTest(),
                 new ForwardRatesApiCallTest(),
+                new ExchangeRateApiCallTest(),
                 new ExchangeRateApiCallRejectionTest()
         };
     }

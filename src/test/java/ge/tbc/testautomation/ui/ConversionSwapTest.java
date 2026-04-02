@@ -13,7 +13,7 @@ import ge.tbc.testautomation.util.RetryCount;
 @Test(groups = {"Scenario - Validate Currency Swap and Recalculation - SCRUM-T1"})
 public class ConversionSwapTest extends BaseTest {
 
-    protected ConversionSwapTest(String browser, String deviceType) {
+    public  ConversionSwapTest(String browser, String deviceType) {
         super(browser, deviceType);
     }
 

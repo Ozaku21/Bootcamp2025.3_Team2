@@ -6,7 +6,7 @@
         <parameter name="browser" value="chromium"/>
         <parameter name="deviceType" value="desktop"/>
         <classes>
-            <class name="ge.tbc.testautomation.ui.Executor"/>
+            <class name="ge.tbc.testautomation.Executor"/>
         </classes>
     </test>
 
@@ -14,7 +14,7 @@
         <parameter name="browser" value="firefox"/>
         <parameter name="deviceType" value="desktop"/>
         <classes>
-            <class name="ge.tbc.testautomation.ui.Executor"/>
+            <class name="ge.tbc.testautomation.Executor"/>
         </classes>
     </test>
 
@@ -22,7 +22,7 @@
         <parameter name="browser" value="webkit"/>
         <parameter name="deviceType" value="desktop"/>
         <classes>
-            <class name="ge.tbc.testautomation.ui.Executor"/>
+            <class name="ge.tbc.testautomation.Executor"/>
         </classes>
     </test>
 
@@ -30,7 +30,7 @@
         <parameter name="browser" value="chromium"/>
         <parameter name="deviceType" value="mobile"/>
         <classes>
-            <class name="ge.tbc.testautomation.ui.Executor"/>
+            <class name="ge.tbc.testautomation.Executor"/>
         </classes>
     </test>
 

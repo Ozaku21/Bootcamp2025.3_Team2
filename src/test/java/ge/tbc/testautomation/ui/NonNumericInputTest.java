@@ -13,7 +13,7 @@ import static ge.tbc.testautomation.data.Constants.*;
 @Test(groups = {"Scenario - Verify Non-Numeric Character Restriction in Amount Field - SCRUM-T5"})
 public class NonNumericInputTest extends BaseTest {
 
-    protected NonNumericInputTest(String browser, String deviceType) {
+    public NonNumericInputTest(String browser, String deviceType) {
         super(browser, deviceType);
     }
 
