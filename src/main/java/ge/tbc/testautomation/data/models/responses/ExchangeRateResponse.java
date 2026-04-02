@@ -4,10 +4,13 @@ package ge.tbc.testautomation.data.models.responses;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import ge.tbc.testautomation.data.models.deserializers.OffsetDateTimeDeserializer;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @Getter
 @Setter
@@ -32,7 +35,7 @@ public class ExchangeRateResponse {
     @JsonProperty("currencyWeight")
     private int currencyWeight;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSS")
     @JsonProperty("updateDate")
-    private LocalDateTime updateDate;
+    @JsonDeserialize(using = OffsetDateTimeDeserializer.class)
+    private OffsetDateTime updateDate;
 }

@@ -28,7 +28,7 @@ public class ForwardRatesApiCallSteps extends BaseApi {
 //                .log().all()
                 .when()
                 .get()
-                .prettyPeek()
+//                .prettyPeek()
                 ;
 
         this.forwardRatesResponseMapper = response.as(ForwardRatesResponse.class);
