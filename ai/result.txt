@@ -1,0 +1,41 @@
+AI CODE REVIEW RESULT (COMPACT)
+Project: Bootcamp2025.3_Team2
+Selected task: AI code review (Playwright improvements)
+
+Scope reviewed:
+- ConvertorPage
+- ConvertorSteps
+- BaseTest
+- ConversionSwapTest
+- Executor/factory setup
+
+Key findings:
+1) ConvertorPage
+- Positional locators (nth) are brittle.
+- Locator strategy is inconsistent.
+
+2) ConvertorSteps
+- Decimal truncation risk in amount input (critical).
+- Missing explicit synchronization after currency selection.
+- Assertion tolerance not clearly tied to business rules.
+
+3) BaseTest
+- Device settings hardcoded.
+- Cookie handling assumes popup always exists.
+- Headless mode lacks runtime flexibility.
+
+4) ConversionSwapTest
+- Navigation as separate ordered test creates test coupling.
+- Missing explicit regressions for empty-input swap and decimal-input behavior.
+
+5) Executor
+- API and UI tests mixed in one factory reduce run flexibility.
+
+Priority actions:
+- CRITICAL: fix decimal handling and dropdown synchronization.
+- HIGH: enforce test independence and add targeted regressions.
+- MEDIUM: improve locator robustness and split UI/API execution strategy.
+
+Overall:
+- Strengths: clear framework structure (POM, step-based flow, data-driven tests).
+- Main risks: flakiness from selector/synchronization issues and maintainability from coupled flows.

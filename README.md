@@ -92,6 +92,31 @@ providing a live, shareable view of test results for the team.
 
 ## AI Summary
 
+### AI Review Summary
+An AI-based code review highlighted both the **strengths** and the **main improvement areas** of our automation framework.
+
+We used AI coding assistance during  review, including GitHub Copilot with Claude Haiku 4.5 for code suggestions and review support.
+### Strengths
+- Well-structured **Page Object Model (POM)**
+- Clean and readable **fluent step design**
+- Good use of **data-driven testing**
+- Support for **cross-browser** and **cross-device** execution
+- Integration of **UI, API, and performance testing**
+- **CI/CD pipeline** and **Allure reporting**
+
+### Key Recommendations
+- Fix **decimal input handling** in currency conversion
+- Add proper **dropdown synchronization** to reduce flaky tests
+- Create **regression tests** for known bugs
+- Replace brittle `.nth()` locators with more stable selectors
+- Improve **test independence** by moving navigation to setup methods
+- Separate **UI and API test execution**
+- Improve **logging**, **debugging**, and framework **scalability**
+
+### Conclusion
+The AI review showed that the framework has a **solid foundation**, but several improvements were recommended to increase **stability**, **maintainability**, and **test reliability**.
+
+
 ## Bug Summary
 Link to the bug report 1: https://dachikazo.atlassian.net/browse/SCRUM-5?atlOrigin=eyJpIjoiNDNjOGZmZmRiNTNmNDcwNDgxOTZhOGNjYTg0OGQ3NzUiLCJwIjoiaiJ9
 
