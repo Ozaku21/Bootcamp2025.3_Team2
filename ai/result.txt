@@ -1,4 +1,4 @@
-AI CODE REVIEW RESULT
+AI CODE REVIEW RESULT (COMPACT)
 Project: Bootcamp2025.3_Team2
 Selected task: AI code review (Playwright improvements)
 
@@ -9,183 +9,33 @@ Scope reviewed:
 - ConversionSwapTest
 - Executor/factory setup
 
-==================================================
-1) COMPONENT: ConvertorPage
-==================================================
+Key findings:
+1) ConvertorPage
+- Positional locators (nth) are brittle.
+- Locator strategy is inconsistent.
 
-Issues Found:
+2) ConvertorSteps
+- Decimal truncation risk in amount input (critical).
+- Missing explicit synchronization after currency selection.
+- Assertion tolerance not clearly tied to business rules.
 
-1. Brittle input locators using nth()
-- What is wrong:
-  Input fields are selected with positional locators (nth(0), nth(1)).
-- Why it matters:
-  DOM order changes can break tests and increase flakiness.
-- How to fix:
-  Prefer semantic selectors (label/role/data-testid) or stable parent-child locators.
+3) BaseTest
+- Device settings hardcoded.
+- Cookie handling assumes popup always exists.
+- Headless mode lacks runtime flexibility.
 
-2. Inconsistent locator strategy
-- What is wrong:
-  Mixed CSS/text/role approach without a clear standard.
-- Why it matters:
-  Harder maintenance in larger suites.
-- How to fix:
-  Define locator preference order and apply consistently.
+4) ConversionSwapTest
+- Navigation as separate ordered test creates test coupling.
+- Missing explicit regressions for empty-input swap and decimal-input behavior.
 
-Scores:
-- Stability: 6/10
-- Maintainability: 7/10
+5) Executor
+- API and UI tests mixed in one factory reduce run flexibility.
 
-==================================================
-2) COMPONENT: ConvertorSteps
-==================================================
+Priority actions:
+- CRITICAL: fix decimal handling and dropdown synchronization.
+- HIGH: enforce test independence and add targeted regressions.
+- MEDIUM: improve locator robustness and split UI/API execution strategy.
 
-Issues Found:
-
-1. Decimal truncation in amount entry (critical)
-- What is wrong:
-  Amount is cast from double to int before input.
-- Why it matters:
-  Decimal values are lost; this can violate decimal-input requirements.
-- How to fix:
-  Input the original decimal value (no int cast).
-
-2. Race condition risk in currency selection
-- What is wrong:
-  No explicit wait after selecting from dropdown.
-- Why it matters:
-  Next action may run before overlay closes, causing intermittent failures.
-- How to fix:
-  Wait for dropdown overlay to be hidden after selection.
-
-3. Weakly justified assertion tolerance
-- What is wrong:
-  Conversion tolerance is broad and not tied to business rule.
-- Why it matters:
-  Can hide calculation/rounding defects.
-- How to fix:
-  Use documented, requirement-based tolerance (e.g., fixed or percentage-based).
-
-Scores:
-- Stability: 6/10
-- Maintainability: 8/10
-
-==================================================
-3) COMPONENT: BaseTest
-==================================================
-
-Issues Found:
-
-1. Hardcoded device profiles
-- What is wrong:
-  Viewport/mobile properties are fixed in code.
-- Why it matters:
-  Low extensibility for new device profiles.
-- How to fix:
-  Move device definitions to enum/config.
-
-2. Unconditional cookie handling
-- What is wrong:
-  Cookie acceptance is always executed.
-- Why it matters:
-  If popup is absent/changed, tests can fail unnecessarily.
-- How to fix:
-  Accept cookies only if present (safe optional action).
-
-3. Headless mode not configurable
-- What is wrong:
-  Browser launch mode is fixed.
-- Why it matters:
-  Harder local debugging.
-- How to fix:
-  Read headed/headless from runtime property.
-
-Scores:
-- Stability: 7/10
-- Maintainability: 6/10
-
-==================================================
-4) COMPONENT: ConversionSwapTest
-==================================================
-
-Issues Found:
-
-1. Test coupling through navigation test ordering
-- What is wrong:
-  Navigation is a separate test assumed to run first.
-- Why it matters:
-  Breaks test independence and can cause confusing failures.
-- How to fix:
-  Move navigation into setup (e.g., BeforeMethod).
-
-2. Missing explicit regression for empty-input swap behavior
-- What is wrong:
-  No dedicated check for empty-input swap edge case.
-- Why it matters:
-  Known risk remains unguarded.
-- How to fix:
-  Add targeted test validating no invalid output (e.g., NaN-like result).
-
-3. Missing explicit regression for decimal input behavior
-- What is wrong:
-  No dedicated decimal-focused scenario.
-- Why it matters:
-  Decimal support can regress unnoticed.
-- How to fix:
-  Add tests with representative decimal values.
-
-Scores:
-- Stability: 7/10
-- Maintainability: 6/10
-
-==================================================
-5) COMPONENT: Executor / Factory
-==================================================
-
-Issues Found:
-
-1. UI and API tests mixed in one executor
-- What is wrong:
-  Same factory builds both UI and API tests.
-- Why it matters:
-  Less flexible execution and slower targeted runs.
-- How to fix:
-  Separate UI and API executors (or isolate by groups).
-
-Scores:
-- Stability: 8/10
-- Maintainability: 6/10
-
-==================================================
-CROSS-CUTTING OBSERVATIONS
-==================================================
-
-- Add explicit waits where UI state transitions are async.
-- Improve failure context (browser/device/url/current values).
-- Keep retries controlled to avoid masking root causes.
-- Prioritize deterministic selectors and independent tests.
-
-==================================================
-PRIORITY ACTIONS
-==================================================
-
-Critical:
-1) Remove decimal truncation in amount input.
-2) Add explicit overlay-close synchronization in currency selection.
-
-High:
-3) Move navigation flow to test setup to ensure independence.
-4) Add dedicated regression tests for empty-input swap and decimal conversion.
-5) Replace brittle positional selectors where possible.
-
-Medium:
-6) Separate UI/API executor strategy.
-7) Externalize device profiles and runtime launch options.
-
-==================================================
-OVERALL EVALUATION
-==================================================
-
-Framework quality is solid at structure level (POM/steps/data-driven patterns), but reliability risks remain in synchronization, selector stability, and test independence.
-Estimated current quality:
-- Stability: 6.8/10
-- Maintainability: 6.6/10
+Overall:
+- Strengths: clear framework structure (POM, step-based flow, data-driven tests).
+- Main risks: flakiness from selector/synchronization issues and maintainability from coupled flows.
