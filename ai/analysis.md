@@ -3,25 +3,28 @@
 ---
 
 ## Project
+
 **Bootcamp2025.3_Team2 - TBC Currency Exchange QA Automation**
 
 ## Purpose
+
 End-to-end automation for **TBC Bank currency converter** (`tbcbank.ge`)
-
-
 
 ## 1. ConvertorPage - LOCATORS ARE BRITTLE
 
 ### Issue
+
 Using `.nth(0)` and `.nth(1)` to select inputs — breaks if DOM changes.
 
 #### ❌ BAD - Brittle
+
 ```java
 this.currencyInput1 = page.locator("div.input-with-label input").nth(0);
 this.currencyInput2 = page.locator("div.input-with-label input").nth(1);
 ```
 
 #### ✅ GOOD - Use data-testid or aria-label
+
 ```java
 this.currencyInput1 = page.locator("input[data-testid='currency-input-from']")
     .or(page.getByLabel("From Amount"));
@@ -38,6 +41,7 @@ this.currencyInput2 = page.locator("input[data-testid='currency-input-to']")
 ### Bug #1: Decimal Truncation (Violates SCRUM-6)
 
 #### ❌ BAD - Loses decimals: `100.5 → 100`
+
 ```java
 public ConvertorSteps enterCurrencyAmount(double amount) {
     convertorPage.currencyInput1.fill(String.valueOf((int) amount));
@@ -46,6 +50,7 @@ public ConvertorSteps enterCurrencyAmount(double amount) {
 ```
 
 #### ✅ GOOD
+
 ```java
 public ConvertorSteps enterCurrencyAmount(double amount) {
     convertorPage.currencyInput1.fill(String.valueOf(amount));
@@ -58,6 +63,7 @@ public ConvertorSteps enterCurrencyAmount(double amount) {
 ### Bug #2: Missing Dropdown Synchronization (Race Condition)
 
 #### ❌ BAD - Dropdown may still be open
+
 ```java
 public ConvertorSteps selectFromCurrency(String currency) {
     convertorPage.fromCurrencyButton.click();
@@ -67,6 +73,7 @@ public ConvertorSteps selectFromCurrency(String currency) {
 ```
 
 #### ✅ GOOD - Wait for overlay to close
+
 ```java
 public ConvertorSteps selectFromCurrency(String currency) {
     convertorPage.fromCurrencyButton.click();
@@ -87,11 +94,13 @@ public ConvertorSteps selectFromCurrency(String currency) {
 ### Bug #3: Arbitrary Tolerance (0.5) — No Business Context
 
 #### ❌ BAD - Why `0.5`? No documentation
+
 ```java
 Assert.assertEquals(actual, expected, 0.5, "Conversion error");
 ```
 
 #### ✅ GOOD - Document and justify tolerance
+
 ```java
 private static final double CONVERSION_TOLERANCE = 0.01; // ±1 cent GEL-EUR
 
@@ -106,6 +115,7 @@ Assert.assertEquals(actual, expected, CONVERSION_TOLERANCE,
 ## 3. BaseTest - HARDCODED, NOT FLEXIBLE
 
 ### Issues
+
 - Device profiles hardcoded (can't add tablet/iPad)
 - Headless always true (can't debug with headed mode)
 - Unconditional cookie click (fragile)
@@ -113,6 +123,7 @@ Assert.assertEquals(actual, expected, CONVERSION_TOLERANCE,
 ---
 
 ### ❌ BAD - Hardcoded, not extensible
+
 ```java
 private Browser.NewContextOptions buildContextOptions() {
     return switch (deviceType) {
@@ -124,6 +135,7 @@ private Browser.NewContextOptions buildContextOptions() {
 ```
 
 ### ✅ GOOD - Externalize to enum
+
 ```java
 private Browser.NewContextOptions buildContextOptions() {
     DeviceProfile profile = DeviceProfile.fromString(deviceType);
@@ -136,6 +148,7 @@ private Browser.NewContextOptions buildContextOptions() {
 ```
 
 ### Device Profile Enum
+
 ```java
 public enum DeviceProfile {
     DESKTOP("desktop", 1920, 1080, false, false, 1.0),
@@ -166,6 +179,7 @@ public enum DeviceProfile {
 ```
 
 ### Also add headed mode support
+
 ```java
 boolean headless = !Boolean.parseBoolean(System.getProperty("headed", "false"));
 BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions()
@@ -173,6 +187,7 @@ BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions()
 ```
 
 ### Run
+
 ```bash
 mvn test -Dheaded=true
 ```
@@ -184,11 +199,13 @@ mvn test -Dheaded=true
 ## 4. ConversionSwapTest - TEST COUPLING + MISSING REGRESSIONS
 
 ### Issue
+
 Navigation as separate test violates independence principle.
 
 ---
 
 ### ❌ BAD - Navigation as separate test (`priority = 1`)
+
 ```java
 @Test(priority = 1)
 public void navigateToCurrencyConvertorPage() {
@@ -200,6 +217,7 @@ public void currencySwap(...) { ... }
 ```
 
 ### ✅ GOOD - Use `@BeforeMethod`
+
 ```java
 @BeforeMethod(alwaysRun = true)
 public void navigateToCurrencyConverter() {
@@ -215,6 +233,7 @@ public void currencySwap(...) { ... }
 ## Missing Regression Tests for Known Bugs
 
 ### SCRUM-5: Empty swap should not show `NaN`
+
 ```java
 @Test(groups = {"SCRUM-5"})
 public void swapWithEmptyInputShouldNotShowNaN() {
@@ -227,6 +246,7 @@ public void swapWithEmptyInputShouldNotShowNaN() {
 ```
 
 ### SCRUM-6: Decimal input support
+
 ```java
 @Test(groups = {"SCRUM-6"})
 public void decimalConversionValidation() {
@@ -239,6 +259,7 @@ public void decimalConversionValidation() {
 ```
 
 ### Add to `ConvertorSteps`
+
 ```java
 @Step("Validate swap does not show NaN")
 public ConvertorSteps validateSwapDoesNotShowNaN() {
@@ -259,6 +280,7 @@ public ConvertorSteps validateSwapDoesNotShowNaN() {
 ## 5. Executor - SPLIT API & UI TESTS
 
 ### ❌ BAD - Mixed API and UI in single factory
+
 ```java
 return new Object[]{
     new InvalidInputTest(browser, deviceType),
@@ -270,6 +292,7 @@ return new Object[]{
 ### ✅ GOOD - Separate executors
 
 #### `UIExecutor.java`
+
 ```java
 public class UIExecutor {
     @Factory
@@ -289,6 +312,7 @@ public class UIExecutor {
 ```
 
 #### `APIExecutor.java`
+
 ```java
 public class APIExecutor {
     @Factory
@@ -309,45 +333,49 @@ public class APIExecutor {
 
 # FRAMEWORK-LEVEL ISSUES
 
-| Issue | Fix |
-|------|-----|
-| No logging | Add Log4j2: `<dependency><groupId>org.apache.logging.log4j</groupId><artifactId>log4j-core</artifactId><version>2.20.0</version></dependency>` |
-| Weak error messages | Include browser, device, URL in failure context |
-| No granular retries | Add step-level retry, not just method-level |
-| Missing wait strategies | Add explicit state waits for async UI changes |
+| Issue                   | Fix                                                                                                                                            |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| No logging              | Add Log4j2: `<dependency><groupId>org.apache.logging.log4j</groupId><artifactId>log4j-core</artifactId><version>2.20.0</version></dependency>` |
+| Weak error messages     | Include browser, device, URL in failure context                                                                                                |
+| No granular retries     | Add step-level retry, not just method-level                                                                                                    |
+| Missing wait strategies | Add explicit state waits for async UI changes                                                                                                  |
 
 ---
 
 # PRIORITY FIXES
 
 ## CRITICAL
+
 - Remove `(int)` cast in `enterCurrencyAmount()` → **SCRUM-6 bug**
 - Add dropdown close wait in `selectFromCurrency/selectToCurrency()` → **Race condition**
 
 ## HIGH
+
 - Add **SCRUM-5** and **SCRUM-6** regression tests
 - Move navigation to `@BeforeMethod`
 - Replace `.nth()` with semantic selectors
 
 ## MEDIUM
+
 - Split `Executor` into **UI + API**
 - Externalize device profiles
 
 ## LOW
+
 - Add logging framework
 
 ---
 
 # SCORES SUMMARY
 
-| Component | Stability | Maintainability |
-|----------|-----------|-----------------|
-| ConvertorPage | 6/10 | 7/10 |
-| ConvertorSteps | 6/10 | 8/10 |
-| BaseTest | 7/10 | 6/10 |
-| ConversionSwapTest | 7/10 | 6/10 |
-| Executor | 8/10 | 6/10 |
-| **OVERALL** | **6.8/10** | **6.6/10** |
+| Component          | Stability  | Maintainability |
+| ------------------ | ---------- | --------------- |
+| ConvertorPage      | 6/10       | 7/10            |
+| ConvertorSteps     | 6/10       | 8/10            |
+| BaseTest           | 7/10       | 6/10            |
+| ConversionSwapTest | 7/10       | 6/10            |
+| Executor           | 8/10       | 6/10            |
+| **OVERALL**        | **6.8/10** | **6.6/10**      |
 
 ---
 
@@ -360,6 +388,7 @@ Framework has good structure (**fluent patterns, data-driven tests**) but three 
 3. **Arbitrary assertion tolerance** hides issues
 
 Also:
+
 - test coupling
 - brittle locators
 - hardcoded configs
@@ -367,6 +396,7 @@ Also:
 These reduce maintainability.
 
 ## Fix these 5 items first:
+
 - Remove decimal truncation
 - Add dropdown synchronization
 - Add missing regression tests
@@ -374,5 +404,6 @@ These reduce maintainability.
 - Replace brittle locators
 
 Then:
+
 - add logging
 - split API/UI tests
