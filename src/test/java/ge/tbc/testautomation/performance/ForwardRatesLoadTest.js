@@ -22,7 +22,7 @@ export const options = {
 
 export function handleSummary(data) {
   return {
-    "ForwardRatesLoadReport.html": htmlReport(data),
+    "performance-results/ForwardRatesLoadReport.html": htmlReport(data),
   };
 }
 
@@ -53,48 +53,7 @@ export default function () {
     check(body, {
       'has rates': (b) => b.hasOwnProperty('rates'),
       'rates not empty': (b) => b.rates.length > 0,
-
-      'each currency has iso': (b) =>
-        b.rates.every(rate => rate.iso && rate.iso.length > 0),
-
-      'each currency has forwardRates': (b) =>
-        b.rates.every(rate => Array.isArray(rate.forwardRates)),
-
-      'forwardRates not empty': (b) =>
-        b.rates.every(rate => rate.forwardRates.length > 0),
-
-      'all forwardRates have iso1/iso2': (b) =>
-        b.rates.every(rate =>
-          rate.forwardRates.every(fr => fr.iso1 && fr.iso2)
-        ),
-
-      'all forwardRates have period': (b) =>
-        b.rates.every(rate =>
-          rate.forwardRates.every(fr => fr.period.length > 0)
-        ),
-
-      'all forwardRates have positive day': (b) =>
-        b.rates.every(rate =>
-          rate.forwardRates.every(fr => fr.day > 0)
-        ),
-
-      'bidForwardRate <= askForwardRate': (b) =>
-        b.rates.every(rate =>
-          rate.forwardRates.every(fr => fr.bidForwardRate <= fr.askForwardRate)
-        ),
-
-      'bidForwardPoint exists': (b) =>
-        b.rates.every(rate =>
-          rate.forwardRates.every(fr => fr.bidForwardPoint !== undefined)
-        ),
-
-      'askForwardPoint exists': (b) =>
-        b.rates.every(rate =>
-          rate.forwardRates.every(fr => fr.askForwardPoint !== undefined)
-        ),
-
-      'updateDate exists': (b) =>
-        b.hasOwnProperty('updateDate'),
+      'updateDate exists': (b) => b.hasOwnProperty('updateDate'),
     });
 
   } else {

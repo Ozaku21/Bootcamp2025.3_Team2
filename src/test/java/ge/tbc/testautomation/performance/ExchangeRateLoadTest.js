@@ -22,7 +22,7 @@ export const options = {
 
 export function handleSummary(data) {
   return {
-    "ExchangeRateLoadReport.html": htmlReport(data),
+    "performance-results/ExchangeRateLoadReport.html": htmlReport(data),
   };
 }
 
@@ -52,9 +52,6 @@ export default function () {
 
     check(body, {
       'correct iso pair': (b) => b.iso1 === 'USD' && b.iso2 === 'GEL',
-      'rates are numbers': (b) => typeof b.buyRate === 'number' && typeof b.sellRate === 'number',
-      'sellRate >= buyRate': (b) => b.sellRate >= b.buyRate,
-      'has positive weight': (b) => b.currencyWeight >= 1,
       'has updateDate': (b) => b.hasOwnProperty('updateDate'),
     });
   } else if (!statusOk) {

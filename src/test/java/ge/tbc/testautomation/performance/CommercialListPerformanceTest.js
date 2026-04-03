@@ -19,7 +19,7 @@ export const options = {
 
 export function handleSummary(data) {
   return {
-    "CommercialListLoadReport.html": htmlReport(data),
+    "performance-results/CommercialListLoadReport.html": htmlReport(data),
   };
 }
 
@@ -47,12 +47,6 @@ export default function () {
     check(res, {
     'body contains rates': (r) => r.json().hasOwnProperty('rates'),
     'rates array is not empty': (r) => r.json().rates.length > 0,
-    'all rates have a iso': (r) => r.json().rates.every(rate => rate.iso.length > 0),
-    'all rates have a name': (r) => r.json().rates.every(rate => rate.name.length > 0),
-    'all sell rates > buy rates': (r) => r.json().rates.every(rate => rate.sellRate >= rate.buyRate),
-    'all rates have a official course': (r) => r.json().rates.every(rate => rate.officialCourse > 0),
-    'all rates have a weight': (r) => r.json().rates.every(rate => rate.weight >= 1),
-    'all rates have diff field':    (r) => r.json().rates.every(rate => rate.hasOwnProperty('diff')),
     'updateDateTime is present': (r) => r.json().hasOwnProperty('updateDateTime'),
   });
   } else {

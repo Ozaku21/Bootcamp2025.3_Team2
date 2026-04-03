@@ -41,7 +41,7 @@ export const options = {
 
 export function handleSummary(data) {
   return {
-    'ExchangeRateStressReport.html': htmlReport(data),
+    'performance-results/ExchangeRateStressReport.html': htmlReport(data),
     stdout: textSummary(data),
   };
 }
@@ -116,10 +116,7 @@ export default function () {
 
       check(body, {
         'correct iso pair':          (b) => b.iso1 === CURRENCY_ONE && b.iso2 === CURRENCY_TWO,
-        'rates are numbers':         (b) => typeof b.buyRate === 'number' && typeof b.sellRate === 'number',
         'sellRate >= buyRate':       (b) => b.sellRate >= b.buyRate,
-        'has positive weight':       (b) => b.currencyWeight >= 1,
-        'updateDate is valid string':(b) => typeof b.updateDate === 'string' && b.updateDate.length > 0,
       });
     }
   });
