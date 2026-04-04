@@ -7,7 +7,8 @@ import org.testng.annotations.Test;
 @Test(groups={"Validate Successful Forward Rates Retrieval - SCRUM-T9", "ApiTests"})
 public class ForwardRatesApiCallTest extends ApiBaseTest {
 
-    @Test(description = "validate successful commercial list api call")
+    @Story("Validate successful forward rates retrieval")
+    @Severity(SeverityLevel.NORMAL)
     public void forwardRatesApiCall(){
         apiSteps
                 .getForwardCurrencyRates()

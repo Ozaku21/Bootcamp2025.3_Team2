@@ -1,11 +1,8 @@
 package ge.tbc.testautomation;
 
 import com.microsoft.playwright.*;
-import ge.tbc.testautomation.steps.CommonSteps;
-import ge.tbc.testautomation.steps.ConvertorSteps;
-import ge.tbc.testautomation.steps.apisteps.CommercialListApiCallSteps;
-import ge.tbc.testautomation.steps.apisteps.ExchangeRateApiCallSteps;
-import ge.tbc.testautomation.steps.apisteps.ForwardRatesApiCallSteps;
+import ge.tbc.testautomation.steps.*;
+import ge.tbc.testautomation.steps.apisteps.*;
 import ge.tbc.testautomation.util.ScreenshotUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -30,11 +27,14 @@ public class BaseTest {
     private final String browserName;
     private final String deviceType;
 
+    // Used by @Factory for parameterized runs (specific browser + device)
     protected BaseTest(String browserName, String deviceType) {
         this.browserName = browserName.toLowerCase();
         this.deviceType  = deviceType.toLowerCase();
     }
 
+    // Used when no args are provided (e.g. ApiBaseTest, or running tests directly from IDE)
+    // Falls back to system properties, defaulting to Chromium + Desktop
     public BaseTest() {
         this.browserName = System.getProperty("browser", CHROMIUM).toLowerCase();
         this.deviceType = System.getProperty("device", DESKTOP).toLowerCase();

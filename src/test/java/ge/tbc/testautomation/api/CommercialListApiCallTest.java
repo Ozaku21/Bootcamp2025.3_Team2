@@ -9,7 +9,8 @@ import static ge.tbc.testautomation.data.Constants.CURRENCY_NAME;
 @Test(groups={"Validate Commercial Exchange Rates - SCRUM-T6", "ApiTests"})
 public class CommercialListApiCallTest extends ApiBaseTest {
 
-    @Test(description = "validate successful commercial list api call")
+    @Story("Validate successful exchange rate API call")
+    @Severity(SeverityLevel.CRITICAL)
     public void exchangeRateApiCall(){
         commercialListApiCallSteps
                 .getCommercialList()
