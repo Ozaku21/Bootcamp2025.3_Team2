@@ -19,5 +19,5 @@ public class ExchangeRateApiCallRejectionTest {
                 .getExchangeRate(GEL, GEL)
                 .validateStatusCode(200)
                 .validateHtmlRejection();
-    }//TODO: ask if this is a bug or a feature ;D
+    }
 }

@@ -2,7 +2,6 @@ package ge.tbc.testautomation.ui;
 
 import ge.tbc.testautomation.BaseTest;
 import ge.tbc.testautomation.data.CurrencyDataProvider;
-import ge.tbc.testautomation.steps.apisteps.ExchangeRateApiCallSteps;
 import io.qameta.allure.*;
 import org.testng.annotations.Test;
 import ge.tbc.testautomation.util.RetryAnalyzer;
@@ -16,6 +15,7 @@ public class ConversionSwapTest extends BaseTest {
     public  ConversionSwapTest(String browser, String deviceType) {
         super(browser, deviceType);
     }
+    
 
     @Story("Navigate to currency converter page")
     @Severity(SeverityLevel.NORMAL)

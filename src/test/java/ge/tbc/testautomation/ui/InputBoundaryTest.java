@@ -12,8 +12,8 @@ import static ge.tbc.testautomation.data.Constants.*;
 @Test(groups = {"Scenario - Validate Conventor Boundary - SCRUM-T3"})
 public class InputBoundaryTest extends BaseTest {
 
-    public InputBoundaryTest(String browserName, String deviceType) {
-        super(browserName, deviceType);
+    public InputBoundaryTest(String browser, String deviceType) {
+        super(browser, deviceType);
     }
 
     @Story("Navigate to currency converter page")

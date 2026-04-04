@@ -12,8 +12,8 @@ import static ge.tbc.testautomation.data.Constants.*;
 @Test(groups = {"Scenario - Validate Invalid Input in Currency Converter - SCRUM-T4"})
 public class InvalidInputTest extends BaseTest {
 
-    public InvalidInputTest(String browserName, String deviceType) {
-        super(browserName, deviceType);
+    public InvalidInputTest(String browser, String deviceType) {
+        super(browser, deviceType);
     }
 
     @Story("Navigate to currency converter page")
