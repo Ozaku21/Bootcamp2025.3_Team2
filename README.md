@@ -146,6 +146,8 @@ k6 run --env BASE_URL=https://apigw.tbcbank.ge --env CURRENCY_ONE=USD --env CURR
 
 Link to the actions page (where the pipelines are):
 https://github.com/Ozaku21/Bootcamp2025.3_Team2/actions/workflows/tests.yml
+Allure Report Link :
+https://ozaku21.github.io/Bootcamp2025.3_Team2/
 
 This project uses GitHub Actions to automatically run tests on every push and pull request.
 The pipeline sets up Java, installs dependencies and Playwright browsers, executes TestNG tests,
