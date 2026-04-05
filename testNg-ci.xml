@@ -18,5 +18,4 @@
             <class name="ge.tbc.testautomation.Executor"/>
         </classes>
     </test>
-
 </suite>
