@@ -115,11 +115,9 @@ public class ExchangeRateApiCallSteps extends BaseApi {
                 !updateDate.isAfter(serverNow.plusSeconds(60)),
                 "Update date is in the future. Was: " + updateDate + ", Server now: " + serverNow);
 
-        long hoursOld = java.time.Duration.between(updateDate, serverNow).toHours();
-        if (hoursOld > 24) {
-            System.out.printf("[WARN] Exchange rate updateDate is %dh old (threshold: 24h). " +
-                    "May indicate a bank holiday or upstream delay.%n", hoursOld);
-        }
+        Assert.assertTrue(
+                updateDate.isAfter(serverNow.minusHours(72)), // ← widened from 24
+                "Update date is too old (>72h). Was: " + updateDate + ", Server now: " + serverNow);
 
         return this;
     }
