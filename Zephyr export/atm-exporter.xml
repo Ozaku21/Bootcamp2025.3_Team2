@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project>
+    <projectId>10000</projectId>
+    <projectKey>SCRUM</projectKey>
+    <exportDate>2026-04-05 09:06:16 UTC</exportDate>
+    <folders>
+        <folder fullPath="FinalProject_API" index="1"/>
+        <folder fullPath="FinalProject_Performance" index="2"/>
+        <folder fullPath="FinalProject_UI " index="0"/>
+    </folders>
+    <testCases>
+        <testCase id="316110803" key="SCRUM-T1">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-03-31 16:03:04 UTC</createdOn>
+            <customFields>
+                <customField name="Category" type="SINGLE_CHOICE_SELECT_LIST">
+                    <value><![CDATA[Scenario]]></value>
+                </customField>
+            </customFields>
+            <folder><![CDATA[FinalProject_UI ]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[Validate Currency Swap and Recalculation ]]></name>
+            <objective><![CDATA[To verify that the user can navigate to the currency converter page and correctly swap selected currencies, ensuring that the conversion result is recalculated accurately after the swap.]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <precondition><![CDATA[User is on the Currency Converter page]]></precondition>
+            <priority><![CDATA[High]]></priority>
+            <status><![CDATA[Scenario Automated]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields/>
+                        <description><![CDATA[Navigate to currency converter page]]></description>
+                        <expectedResult><![CDATA[User is successfully navigated to the Currency Converter page]]></expectedResult>
+                        <testData><![CDATA[Click "Currency Exchange" Button]]></testData>
+                    </step>
+                    <step index="1">
+                        <customFields/>
+                        <description><![CDATA[Swap currencies and validate recalculation]]></description>
+                        <expectedResult><![CDATA[Conversion is recalculated correctly based on swapped currencies]]></expectedResult>
+                        <testData><![CDATA[<ul><li data-section-id="2qjmrl" data-start="1082" data-end="1103" data-pasted="true">fromCurrency: USD</li><li data-section-id="gqosng" data-start="1104" data-end="1123">toCurrency: GEL</li><li>amount: 100</li></ul>]]></testData>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+        <testCase id="316120015" key="SCRUM-T2">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-03-31 16:20:15 UTC</createdOn>
+            <customFields>
+                <customField name="Category" type="SINGLE_CHOICE_SELECT_LIST">
+                    <value><![CDATA[Scenario]]></value>
+                </customField>
+            </customFields>
+            <folder><![CDATA[FinalProject_UI ]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[Validate Currency Conversion]]></name>
+            <objective><![CDATA[To verify that the user can navigate to the currency converter page and that currency conversion is calculated correctly across different currency pairs and various input amounts.]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <precondition><![CDATA[<ul><li data-section-id="12b38kp" data-start="597" data-end="644" data-pasted="true">User is on the main page of the application</li><li data-section-id="1w7ucox" data-start="645" data-end="678">Application is up and running</li></ul>]]></precondition>
+            <priority><![CDATA[High]]></priority>
+            <status><![CDATA[Scenario Automated]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields/>
+                        <description><![CDATA[Navigate to currency converter page]]></description>
+                        <expectedResult><![CDATA[User is successfully navigated to the Currency Converter page]]></expectedResult>
+                        <testData><![CDATA[Click "Currency Exchange" Button]]></testData>
+                    </step>
+                    <step index="1">
+                        <customFields/>
+                        <description><![CDATA[Validate conversion across currency pairs]]></description>
+                        <expectedResult><![CDATA[Conversion is calculated correctly for each pair]]></expectedResult>
+                        <testData><![CDATA[<table data-pasted="true"><thead><tr><th>fromCurrency</th><th>toCurrency</th><th>amount</th></tr></thead><tbody><tr><td>USD</td><td>EUR</td><td>100</td></tr><tr><td>EUR</td><td>GEL</td><td>250</td></tr><tr><td>GBP</td><td>USD</td><td>50</td></tr></tbody></table>]]></testData>
+                    </step>
+                    <step index="2">
+                        <customFields/>
+                        <description><![CDATA[Validate conversion across various amounts]]></description>
+                        <expectedResult><![CDATA[Conversion is calculated correctly for each amount]]></expectedResult>
+                        <testData><![CDATA[<table data-pasted="true"><thead><tr><th>fromCurrency</th><th>toCurrency</th><th>amount</th></tr></thead><tbody><tr><td>USD</td><td>EUR</td><td>1</td></tr><tr><td>USD</td><td>EUR</td><td>1000</td></tr><tr><td>USD</td><td>EUR</td><td>99999</td></tr></tbody></table>]]></testData>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+        <testCase id="316122165" key="SCRUM-T3">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-03-31 16:27:36 UTC</createdOn>
+            <customFields>
+                <customField name="Category" type="SINGLE_CHOICE_SELECT_LIST">
+                    <value><![CDATA[Scenario]]></value>
+                </customField>
+            </customFields>
+            <folder><![CDATA[FinalProject_UI ]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[Validate Converter Input Boundary]]></name>
+            <objective><![CDATA[To verify that the currency converter correctly handles input boundary conditions by restricting or validating the allowed input length/values.]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <precondition><![CDATA[User is on the main page of the application]]></precondition>
+            <priority><![CDATA[Normal]]></priority>
+            <status><![CDATA[Scenario Automated]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields/>
+                        <description><![CDATA[Navigate to currency converter page]]></description>
+                        <expectedResult><![CDATA[User is successfully navigated to the Currency Converter page]]></expectedResult>
+                        <testData><![CDATA[Click "Currency Exchange" Button]]></testData>
+                    </step>
+                    <step index="1">
+                        <customFields/>
+                        <description><![CDATA[Select Currency Conversion]]></description>
+                        <expectedResult><![CDATA[<ul><li data-section-id="5l1kvo" data-start="846" data-end="879" data-pasted="true">"From" currency is set to GEL</li><li data-section-id="q9xd79" data-start="883" data-end="914">"To" currency is set to EUR</li></ul>]]></expectedResult>
+                        <testData><![CDATA[GEL to EUR]]></testData>
+                    </step>
+                    <step index="2">
+                        <customFields/>
+                        <description><![CDATA[Enter amount for conversion]]></description>
+                        <testData><![CDATA[9999999993339999999999999988]]></testData>
+                    </step>
+                    <step index="3">
+                        <customFields/>
+                        <description><![CDATA[Verify Boundary]]></description>
+                        <expectedResult><![CDATA[<ul data-pasted="true"><li data-section-id="1mk4s9c" data-start="1089" data-end="1179" data-pasted="true">Input field enforces defined boundary limits&nbsp;</li><li data-section-id="pu5x2s" data-start="1183" data-end="1290">System behaves correctly when boundary is reached (no overflow / invalid input handling works properly)</li></ul>]]></expectedResult>
+                        <testData><![CDATA[]]></testData>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+        <testCase id="316129204" key="SCRUM-T4">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-03-31 16:35:18 UTC</createdOn>
+            <customFields>
+                <customField name="Category" type="SINGLE_CHOICE_SELECT_LIST">
+                    <value><![CDATA[Scenario]]></value>
+                </customField>
+            </customFields>
+            <folder><![CDATA[FinalProject_UI ]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[Validate Invalid Input in Currency Converter]]></name>
+            <objective><![CDATA[To verify that the currency converter correctly handles invalid input values and prevents incorrect or unsupported data from being processed.]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <precondition><![CDATA[<ul data-start="545" data-end="626" data-pasted="true"><li data-section-id="12b38kp" data-start="545" data-end="592">User is on the main page of the application</li><li data-section-id="1w7ucox" data-start="593" data-end="626">Application is up and running</li></ul>]]></precondition>
+            <priority><![CDATA[Normal]]></priority>
+            <status><![CDATA[Scenario Automated]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields/>
+                        <description><![CDATA[Navigate to currency converter page]]></description>
+                        <expectedResult><![CDATA[User is successfully navigated to the Currency Converter page]]></expectedResult>
+                        <testData><![CDATA[Click "Currency Exchange" Button]]></testData>
+                    </step>
+                    <step index="1">
+                        <customFields/>
+                        <description><![CDATA[Select Currency Conversion]]></description>
+                        <expectedResult><![CDATA[<ul><li data-section-id="5l1kvo" data-start="882" data-end="915" data-pasted="true">"From" currency is set to GEL</li><li data-section-id="q9xd79" data-start="919" data-end="950">"To" currency is set to EUR</li></ul>]]></expectedResult>
+                        <testData><![CDATA[GEL TO EUR]]></testData>
+                    </step>
+                    <step index="2">
+                        <customFields/>
+                        <description><![CDATA[Enter amount for conversion]]></description>
+                        <testData><![CDATA[-265]]></testData>
+                    </step>
+                    <step index="3">
+                        <customFields/>
+                        <description><![CDATA[Validate Invalid Input]]></description>
+                        <expectedResult><![CDATA[<ul><li data-section-id="11933zr" data-start="1143" data-end="1192" data-pasted="true">Invalid input is handled properly</li><li data-section-id="wgg8gl" data-start="1196" data-end="1244">System does not perform incorrect conversion</li><li data-section-id="1vxxcd6" data-start="1248" data-end="1337">Proper validation behavior is triggered&nbsp;</li></ul>]]></expectedResult>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+        <testCase id="316130166" key="SCRUM-T5">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-03-31 16:39:53 UTC</createdOn>
+            <customFields>
+                <customField name="Category" type="SINGLE_CHOICE_SELECT_LIST">
+                    <value><![CDATA[Scenario]]></value>
+                </customField>
+            </customFields>
+            <folder><![CDATA[FinalProject_UI ]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[Verify Non-Numeric Character Restriction in Amount Field]]></name>
+            <objective><![CDATA[To verify that the currency converter input field does not accept non-numeric values and enforces numeric-only input validation]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <precondition><![CDATA[<h2 data-section-id="edqc9k" data-start="492" data-end="513" data-pasted="true"><br></h2><ul data-start="514" data-end="595"><li data-section-id="12b38kp" data-start="514" data-end="561">User is on the main page of the application</li><li data-section-id="1w7ucox" data-start="562" data-end="595">Application is up and running</li></ul>]]></precondition>
+            <priority><![CDATA[Normal]]></priority>
+            <status><![CDATA[Scenario Automated]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields/>
+                        <description><![CDATA[Navigate to currency converter page]]></description>
+                        <expectedResult><![CDATA[User is successfully navigated to the Currency Converter page]]></expectedResult>
+                        <testData><![CDATA[Click "Currency Exchange" Button]]></testData>
+                    </step>
+                    <step index="1">
+                        <customFields/>
+                        <description><![CDATA[Validate non-numeric value]]></description>
+                        <expectedResult><![CDATA[<ul><li data-section-id="i23bnc" data-start="929" data-end="1004" data-pasted="true">Input field <strong data-start="974" data-end="980"></strong> does not display them</li><li data-section-id="1qzlfjr" data-start="1008" data-end="1057">No conversion is triggered with invalid input</li><li data-section-id="1kz6e87" data-start="1061" data-end="1126">System maintains valid state</li></ul>]]></expectedResult>
+                        <testData><![CDATA[enter "non-numeric"]]></testData>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+        <testCase id="316546856" key="SCRUM-T6">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-04-01 16:57:55 UTC</createdOn>
+            <customFields>
+                <customField name="Category" type="SINGLE_CHOICE_SELECT_LIST">
+                    <value><![CDATA[Scenario]]></value>
+                </customField>
+            </customFields>
+            <folder><![CDATA[FinalProject_API]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[[API] Validate Commercial Exchange Rates]]></name>
+            <objective><![CDATA[Verify that the Commercial List API returns correct exchange rate data, including status codes, currency details, and chronological accuracy.]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <precondition><![CDATA[API service is up and running.]]></precondition>
+            <priority><![CDATA[Normal]]></priority>
+            <status><![CDATA[Automated]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields>
+                            <customField name="description" type="MULTI_LINE_TEXT">
+<value><![CDATA[GET /api/v1/exchangeRates/commercialList]]></value>
+                            </customField>
+                        </customFields>
+                        <description><![CDATA[Retrieve Commercial Exchange Rates]]></description>
+                        <expectedResult><![CDATA[<p data-pm-slice="1 1 []" data-pasted="true">1. API returns a successful 200 OK response.</p>2. Response body is correctly mapped to the CommercialListResponse model.<br>3. Exchange rates list is not empty and contains valid data.<br>4. Official rates are correctly calculated/positioned between buy/sell rates.<br>5. All currency details and update timestamps are accurate.]]></expectedResult>
+                        <testData><![CDATA[<p data-pm-slice="1 1 []" data-pasted="true">{ "locale": "ka-GE" }</p>where CURRENCY_NAME is a &nbsp;"USD" and the response is mapped to CommercialListResponse]]></testData>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+        <testCase id="316547680" key="SCRUM-T7">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-04-01 17:06:27 UTC</createdOn>
+            <customFields/>
+            <folder><![CDATA[FinalProject_API]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[[API] Validate Exchange Rate Rejection for Identical Parameters]]></name>
+            <objective><![CDATA[To verify that the API correctly handles and rejects requests when the source and target currencies are identical&nbsp;]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <precondition><![CDATA[<ul><li data-pasted="true"><p data-path-to-node="6,0,0">API service is reachable.</p></li><li><p data-path-to-node="6,1,0">Base and Target currency codes (Constants) are defined in the system.</p></li><li><p data-path-to-node="6,2,0">User has necessary permissions to call the exchange rate endpoint.</p></li></ul>]]></precondition>
+            <priority><![CDATA[Normal]]></priority>
+            <status><![CDATA[Automated]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields>
+                            <customField name="description" type="MULTI_LINE_TEXT">
+<value><![CDATA[/api/v1/exchangeRates/getExchangeRate]]></value>
+                            </customField>
+                        </customFields>
+                        <description><![CDATA[Validate Exchange Rate Rejection for Identical Currencies]]></description>
+                        <expectedResult><![CDATA[The API returns a <b data-path-to-node="11,1,2,0" data-index-in-node="18" data-pasted="true">200</b> status, and the response body contains the expected HTML Rejection message]]></expectedResult>
+                        <testData><![CDATA[{ "from": "GEL", "to": "GEL" }]]></testData>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+        <testCase id="316549941" key="SCRUM-T8">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-04-01 17:14:02 UTC</createdOn>
+            <customFields/>
+            <folder><![CDATA[FinalProject_API]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[[API] Validate Successful Exchange Rate Calculation]]></name>
+            <objective><![CDATA[To verify that the API successfully returns accurate exchange rate data, including buy/sell rates and currency metadata, for a valid currency pair.]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <precondition><![CDATA[<ul><li data-pasted="true"><p data-path-to-node="6,0,0">API service is operational.</p></li><li><p data-path-to-node="6,1,0">The specified currency constants (EUR, GEL) are valid and supported by the system</p></li></ul>]]></precondition>
+            <priority><![CDATA[Normal]]></priority>
+            <status><![CDATA[Automated]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields>
+                            <customField name="description" type="MULTI_LINE_TEXT">
+<value><![CDATA[/api/v1/exchangeRates/getExchangeRate]]></value>
+                            </customField>
+                        </customFields>
+                        <description><![CDATA[Execute Successful Exchange Rate Retrieval]]></description>
+                        <expectedResult><![CDATA[<p data-path-to-node="11,1,2,0" data-pasted="true">1. API returns <b data-path-to-node="11,1,2,0" data-index-in-node="15">200 OK</b>.</p><p data-path-to-node="11,1,2,2">2. Incoming and Outcome currencies are correct.</p><p data-path-to-node="11,1,2,4">3. <b data-path-to-node="11,1,2,4" data-index-in-node="4">Sell Rate</b> is greater than <b data-path-to-node="11,1,2,4" data-index-in-node="30">Buy Rate</b>.</p><p data-path-to-node="11,1,2,6">4. All metadata is valid and mapped correctly.</p>]]></expectedResult>
+                        <testData><![CDATA[{ "from": "EUR", "to": "GEL" }]]></testData>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+        <testCase id="316550696" key="SCRUM-T9">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-04-01 17:17:35 UTC</createdOn>
+            <customFields>
+                <customField name="Category" type="SINGLE_CHOICE_SELECT_LIST">
+                    <value><![CDATA[Scenario]]></value>
+                </customField>
+            </customFields>
+            <folder><![CDATA[FinalProject_API]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[[API] Validate Successful Forward Rates Retrieval]]></name>
+            <objective><![CDATA[To verify that the API successfully returns current forward currency rates, including correctly grouped rate details and valid update timestamps.]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <precondition><![CDATA[<ul><li data-pasted="true"><p data-path-to-node="6,0,0">Forward Rates API service is operational and accessible.</p></li><li><p data-path-to-node="6,1,0">System has active forward rate groups configured</p></li></ul>]]></precondition>
+            <priority><![CDATA[Normal]]></priority>
+            <status><![CDATA[Automated]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields>
+                            <customField name="description" type="MULTI_LINE_TEXT">
+<value><![CDATA[<div>/api/v1/forwardRates/getForwardRates</div>]]></value>
+                            </customField>
+                        </customFields>
+                        <description><![CDATA[Retrieve and Validate Forward Currency Rates]]></description>
+                        <expectedResult><![CDATA[<p data-path-to-node="11,1,2,0" data-pasted="true">1. API returns <b data-path-to-node="11,1,2,0" data-index-in-node="15">200 OK</b>.</p><p data-path-to-node="11,1,2,2">2. Forward rates list is not empty.</p><p data-path-to-node="11,1,2,4">3. Rates are correctly grouped and contain valid details.</p><p data-path-to-node="11,1,2,6">4. The update date is current and valid.</p>]]></expectedResult>
+                        <testData><![CDATA[<p data-pm-slice="1 1 []" data-pasted="true"><br></p>{ "Action": "GET", "Resource": "ForwardRates" }<br>where the response is mapped to the ForwardRatesResponse model.]]></testData>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+        <testCase id="316940692" key="SCRUM-T10">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-04-03 08:49:18 UTC</createdOn>
+            <customFields/>
+            <folder><![CDATA[FinalProject_Performance]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[Validate Commercial List API Performance Under Load]]></name>
+            <objective><![CDATA[To verify that the Commercial List API performs within acceptable response time and error thresholds under load, while returning valid and complete data.]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <precondition><![CDATA[<br><ul><li data-section-id="kkui63" data-start="775" data-end="862">API endpoint is accessible:<br data-start="804" data-end="807">/api/v1/exchangeRates/commercialList?locale=ka-GE</li><li data-section-id="18lqbpp" data-start="863" data-end="896">Network conditions are stable</li></ul>]]></precondition>
+            <priority><![CDATA[High]]></priority>
+            <status><![CDATA[Performance Done]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields/>
+                        <description><![CDATA[Execute Load Test Scenario]]></description>
+                        <expectedResult><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">1. http_req_failed is less than 1%.</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><br style="box-sizing: border-box;"></p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>2. http_req_duration is under 500ms.</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><br style="box-sizing: border-box;"></p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>3. No connection timeouts</p>]]></expectedResult>
+                        <testData><![CDATA[<p data-path-to-node="6,1,2,0" data-pasted="true"><b data-path-to-node="6,1,2,0" data-index-in-node="0">Target:</b> 25 VUs</p><p data-path-to-node="6,1,2,2"><b data-path-to-node="6,1,2,2" data-index-in-node="1">Ramp-up:</b> 30s</p><p data-path-to-node="6,1,2,4"><b data-path-to-node="6,1,2,4" data-index-in-node="1">Duration:</b> 1m</p><p data-path-to-node="6,1,2,6"><b data-path-to-node="6,1,2,6" data-index-in-node="1">Ramp-down:</b> 30s</p>]]></testData>
+                    </step>
+                    <step index="1">
+                        <customFields>
+                            <customField name="description" type="MULTI_LINE_TEXT">
+<value><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">Endpoint: /exchangeRates/commercialList</p>]]></value>
+                            </customField>
+                        </customFields>
+                        <description><![CDATA[<span style='color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;' data-pasted="true">Validate Response Integrity</span>]]></description>
+                        <expectedResult><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">1. HTTP Status is 200.</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><br style="box-sizing: border-box;"></p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>2. Body contains rates array (not empty).</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><br style="box-sizing: border-box;"></p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>3. updateDateTime field is present and valid.</p>]]></expectedResult>
+                        <testData><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true"><br></p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><br style="box-sizing: border-box;"></p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Locale: ka-GE</p>]]></testData>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+        <testCase id="316991364" key="SCRUM-T11">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-04-03 16:45:56 UTC</createdOn>
+            <customFields/>
+            <folder><![CDATA[FinalProject_Performance]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[Get Exchange Rate API Performance]]></name>
+            <objective><![CDATA[<span style='color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;' data-pasted="true">Validate that the system can handle concurrent requests for a specific currency pai while maintaining a strict 400ms threshold for the specific get_exchange_rate_duration metric.</span>]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <priority><![CDATA[Normal]]></priority>
+            <status><![CDATA[Performance Done]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields/>
+                        <description><![CDATA[<span style='color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;' data-pasted="true">Execute Load Test Scenario</span>]]></description>
+                        <expectedResult><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">1. http_req_failed &lt; 1%.</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><br style="box-sizing: border-box;"></p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>2. get_exchange_rate_duration (P95) &lt; 400ms.</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><br style="box-sizing: border-box;"></p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>3. Max response time &lt; 1000ms.</p>]]></expectedResult>
+                        <testData><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">VUs: 25</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><br style="box-sizing: border-box;"></p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Ramp-up: 30s</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><br style="box-sizing: border-box;"></p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Duration: 1m</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'><br style="box-sizing: border-box;"></p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Ramp-down: 30</p>]]></testData>
+                    </step>
+                    <step index="1">
+                        <customFields/>
+                        <description><![CDATA[<span style='color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;' data-pasted="true">Verify Response for Specific Pair</span>]]></description>
+                        <expectedResult><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">1. HTTP Status is 200.</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>2. Response iso1 is "USD" and iso2 is "GEL".</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>3. updateDate field is present in the response body.</p>4. No "Request failed" warnings in the console logs.<br><br>]]></expectedResult>
+                        <testData><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">Iso1=USD</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Iso2=GEL</p>Timeout: 3s<br><br>]]></testData>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+        <testCase id="316991601" key="SCRUM-T12">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-04-03 16:49:24 UTC</createdOn>
+            <customFields/>
+            <folder><![CDATA[FinalProject_Performance]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[Exchange Rate API Stress Test & WAF Resilience]]></name>
+            <objective><![CDATA[<p data-path-to-node="5" data-pasted="true">Determine the API's breaking point and evaluate how the network infrastructure (Firewall/WAF) handles high-concurrency spikes (up to 150 VUs).</p>]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <priority><![CDATA[Normal]]></priority>
+            <status><![CDATA[Performance Done]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields/>
+                        <description><![CDATA[<span style='color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;' data-pasted="true">Execute Multi-Stage Stress Test</span>]]></description>
+                        <expectedResult><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">1. http_req_failed &lt; 20%.</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>2. firewall_block_rate &lt; 50%.</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>3. No system crashes (500 errors) before reaching 75 VUs.</p>]]></expectedResult>
+                        <testData><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">Max VUs: 150</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Total Duration: ~8m</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Timeout: 5s</p>]]></testData>
+                    </step>
+                    <step index="1">
+                        <customFields/>
+                        <description><![CDATA[<span style='color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;' data-pasted="true">Verify Retry &amp; Firewall Logic</span>]]></description>
+                        <expectedResult><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">1. Script logs warnings when blocked.</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>2. Retries are triggered for 5xx errors.</p>]]></expectedResult>
+                        <testData><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">Retries: Max 2</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Block Indicators: 403, 429, 503</p>]]></testData>
+                    </step>
+                    <step index="2">
+                        <customFields/>
+                        <description><![CDATA[Data Integrity Check]]></description>
+                        <expectedResult><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">1. 100% of successful responses (200 OK) contain the correct USD/GEL pair.</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>2. Business Rule: sellRate is consistently &gt;= buyRate</p>]]></expectedResult>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+        <testCase id="316991837" key="SCRUM-T13">
+            <attachments/>
+            <confluencePageLinks/>
+            <createdBy>Elene Gabrielashvili</createdBy>
+            <createdOn>2026-04-03 16:59:49 UTC</createdOn>
+            <customFields/>
+            <folder><![CDATA[FinalProject_Performance]]></folder>
+            <issues/>
+            <labels/>
+            <name><![CDATA[Forward Rates API Performance]]></name>
+            <objective><![CDATA[<span style='color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;'>To verify that the&nbsp;</span>Forward Rates API<span style='color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;'>&nbsp;can maintain high availability and sub-500ms response times under a concurrent load of 25 users</span>]]></objective>
+            <owner>712020:f34c5286-01ec-4dd3-82e3-84840cfd6807</owner>
+            <priority><![CDATA[Normal]]></priority>
+            <status><![CDATA[Performance Done]]></status>
+            <parameters/>
+            <testDataWrapper/>
+            <testScript type="steps">
+                <steps>
+                    <step index="0">
+                        <customFields/>
+                        <description><![CDATA[<span style='color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;' data-pasted="true">Execute API Load Test</span>]]></description>
+                        <expectedResult><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">1. http_req_failed is less than 1%.</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>2. forward_rates_duration (P95) is under 500ms.</p>]]></expectedResult>
+                        <testData><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">VUs: 25</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Duration: 1.5 min</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>Timeout: 2s</p>]]></testData>
+                    </step>
+                    <step index="1">
+                        <customFields>
+                            <customField name="description" type="MULTI_LINE_TEXT">
+<value><![CDATA[<br data-pasted="true"><span style='color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;'>/forwardRates/getForwardRates</span>]]></value>
+                            </customField>
+                        </customFields>
+                        <description><![CDATA[<span style='color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;' data-pasted="true">Validate Forward Rates Data</span>]]></description>
+                        <expectedResult><![CDATA[<p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;' data-pasted="true">1. HTTP Status is 200.</p><p style='cursor: text; box-sizing: border-box; margin: 0px; padding: 0px; counter-reset: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0; color: rgb(31, 31, 31); font-family: "Google Sans Flex", "Google Sans", "Helvetica Neue", sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: none; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre-wrap; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>2. Response body contains a non-empty rates list and a valid updateDate.</p>]]></expectedResult>
+                    </step>
+                </steps>
+            </testScript>
+        </testCase>
+    </testCases>
+</project>
