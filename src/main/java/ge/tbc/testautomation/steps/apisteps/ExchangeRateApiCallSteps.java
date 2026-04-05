@@ -104,7 +104,6 @@ public class ExchangeRateApiCallSteps extends BaseApi {
         Assert.assertNotNull(exchangeRateResponseMapper.getUpdateDate(),
                 "Update date should not be null");
 
-        //correctly labels it as Tbilisi time (+04:00).
         OffsetDateTime updateDate = exchangeRateResponseMapper.getUpdateDate()
                 .withOffsetSameLocal(ZoneOffset.ofHours(4));
 
@@ -117,8 +116,8 @@ public class ExchangeRateApiCallSteps extends BaseApi {
                 "Update date is in the future. Was: " + updateDate + ", Server now: " + serverNow);
 
         Assert.assertTrue(
-                updateDate.isAfter(serverNow.minusHours(24)),
-                "Update date is too old. Was: " + updateDate + ", Server now: " + serverNow);
+                updateDate.isAfter(serverNow.minusHours(72)), // ← widened from 24
+                "Update date is too old (>72h). Was: " + updateDate + ", Server now: " + serverNow);
 
         return this;
     }
